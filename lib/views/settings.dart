@@ -1,4 +1,11 @@
-import 'package:flutter/cupertino.dart';
+/*  Minor bug
+If bg-color of 'body:' is changed,
+it applies to it but due to scroll behavior,
+the space for keyboard pop-up is set to white by default
+leaving that area white-colored.
+To make that invisible, keep the screen bg-color white. (Big Brain Time)
+*/
+
 import 'package:flutter/material.dart';
 
 class Settings extends StatefulWidget {
@@ -17,7 +24,7 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(206, 206, 206, 0.5),
+        //backgroundColor: const Color.fromRGBO(206, 206, 206, 0.5),
         titleTextStyle: const TextStyle(
             fontSize: 30,
             //universal color for all elements
@@ -65,8 +72,9 @@ class _SettingsState extends State<Settings> {
           )
         ],
       ),
-      body: Container(
-        color: const Color.fromRGBO(206, 206, 206, 0.5),
+      body: SingleChildScrollView(    //avoids render overflow due to keyboard pop-up
+        scrollDirection: Axis.vertical,
+
         child: Column(
           children: [
             const SizedBox(
@@ -116,7 +124,8 @@ class _SettingsState extends State<Settings> {
                       textAlign: TextAlign.left,
                       controller: setFullname,
                       decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(20, 5, 20, 5),  //controls the field size
+                        contentPadding: EdgeInsets.fromLTRB(
+                            20, 5, 20, 5), //controls the field size
                         hintText: 'Hitler Bin Ladin', //fetch from DB
                         hintStyle: TextStyle(
                           fontSize: 18,
@@ -124,13 +133,14 @@ class _SettingsState extends State<Settings> {
                           color: Colors.black,
                         ),
                         filled: true,
-                        fillColor: Colors.white,
+                        fillColor: Color.fromRGBO(206, 206, 206, 0.5),
 
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                               color: Colors.transparent,
                             ),
-                            borderRadius: BorderRadius.all(Radius.circular(32))),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(32))),
 
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -141,7 +151,9 @@ class _SettingsState extends State<Settings> {
                         //labelText: 'User Name',
                       ),
                     ),
-                    const SizedBox(height: 20,),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     const Text(
                       'Email',
                       style: TextStyle(
@@ -152,7 +164,8 @@ class _SettingsState extends State<Settings> {
                       textAlign: TextAlign.left,
                       controller: setEmail,
                       decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(20, 5, 20, 5),  //controls the field size
+                        contentPadding: EdgeInsets.fromLTRB(
+                            20, 5, 20, 5), //controls the field size
                         hintText: 'hitler@gmail.com', //fetch from DB
                         hintStyle: TextStyle(
                           fontSize: 18,
@@ -160,13 +173,14 @@ class _SettingsState extends State<Settings> {
                           color: Colors.black,
                         ),
                         filled: true,
-                        fillColor: Colors.white,
+                        fillColor: Color.fromRGBO(206, 206, 206, 0.5),
 
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                               color: Colors.transparent,
                             ),
-                            borderRadius: BorderRadius.all(Radius.circular(32))),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(32))),
 
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -177,7 +191,9 @@ class _SettingsState extends State<Settings> {
                         //labelText: 'User Name',
                       ),
                     ),
-                    const SizedBox(height: 20,),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     const Text(
                       'Password',
                       style: TextStyle(
@@ -189,7 +205,8 @@ class _SettingsState extends State<Settings> {
                       textAlign: TextAlign.left,
                       controller: setPassword,
                       decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(20, 5, 20, 5),  //controls the field size
+                        contentPadding: EdgeInsets.fromLTRB(
+                            20, 5, 20, 5), //controls the field size
                         hintText: '*********', //fetch from DB
                         hintStyle: TextStyle(
                           fontSize: 18,
@@ -197,13 +214,14 @@ class _SettingsState extends State<Settings> {
                           color: Colors.black,
                         ),
                         filled: true,
-                        fillColor: Colors.white,
+                        fillColor: Color.fromRGBO(206, 206, 206, 0.5),
 
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                               color: Colors.transparent,
                             ),
-                            borderRadius: BorderRadius.all(Radius.circular(32))),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(32))),
 
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
