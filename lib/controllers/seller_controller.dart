@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:js';
+import 'package:flutter/material.dart';
 import "package:http/http.dart" as http;
 import '../models/seller_model.dart';
 
@@ -37,6 +39,28 @@ class SellerController {
         return jsonResponse['message'] == 'Login successful';
       } else {
         throw Exception('Failed to authenticate seller');
+      }
+    } catch (error) {
+      print(error);
+      return false;
+    }
+  }
+
+  Future<bool> signup(String email, String password, String name) async {
+    try {
+      final response = await http.post(
+        Uri.parse('http://localhost:3300/sellers/signup'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'email': email,
+          'password': password,
+          'seller_name': name,
+        }),
+      );
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        throw Exception('Failed to register seller');
       }
     } catch (error) {
       print(error);
