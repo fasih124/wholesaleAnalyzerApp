@@ -66,7 +66,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     color: Colors.blue,
                     fontWeight: FontWeight.bold,
                     fontSize: 30),
-              )),
+              ),
+          ),
           Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.all(5),
