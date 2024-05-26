@@ -4,6 +4,8 @@ import '../models/seller_model.dart';
 
 class SellerController {
   static const String _baseUrl = 'http://localhost:3000/sellers';
+  late String _sellerID;
+  Seller? _currentSeller;
 
   Future<bool> login(String email, String password) async {
     try {
@@ -17,8 +19,21 @@ class SellerController {
       if (response.statusCode == 200) {
         // Parse the JSON response
         var jsonResponse = jsonDecode(response.body);
-        print(jsonResponse); // Debugging: Print the response
+        // print(jsonResponse); // Debugging: Print the response
         // Assuming the response contains a 'message' field indicating success
+        if (jsonResponse.containsKey('message') &&
+            jsonResponse.containsKey('data')) {
+          _currentSeller = Seller.fromJson(jsonResponse);
+        }
+        // Handle potential null values for _currentSeller or its data
+        if (_currentSeller?.data?.isNotEmpty == true) {
+          _sellerID =
+              _currentSeller!.data![0].sellerId.toString(); // Access sellerId
+          print("seller ID is : " + _sellerID);
+        } else {
+          print('Error: _currentSeller or its data list is null or empty');
+        }
+
         return jsonResponse['message'] == 'Login successful';
       } else {
         throw Exception('Failed to authenticate seller');

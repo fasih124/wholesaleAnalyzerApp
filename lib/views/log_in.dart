@@ -81,6 +81,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
             ),
           ),
+          const SizedBox(
+            height: 100,
+          ),
           Container(
             padding: const EdgeInsets.all(5),
             child: TextField(
@@ -136,25 +139,25 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              TextButton(
-                onPressed: () {
-                  //forgot password screen
-                },
-                child: const Text(
-                  'Forgot Password? (Optional)',
-                  style: TextStyle(
-                    color: Colors.blueAccent,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-            ],
-          ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.end,
+          //   children: [
+          //     TextButton(
+          //       onPressed: () {
+          //         //forgot password screen
+          //       },
+          //       child: const Text(
+          //         'Forgot Password? (Optional)',
+          //         style: TextStyle(
+          //           color: Colors.blueAccent,
+          //           fontSize: 16,
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
           const SizedBox(
-            height: 15,
+            height: 50,
           ),
           Container(
             height: 50,
@@ -181,7 +184,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   if (success) {
                     // Navigate to the seller dashboard or another page upon successful login
                     Navigator.pushReplacementNamed(
-                        context, '/settings'); // Example navigation
+                        context, '/product'); // Example navigation
                   } else {
                     // Handle login failure
                     ScaffoldMessenger.of(context)
