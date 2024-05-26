@@ -173,16 +173,16 @@ class _ProductsState extends State<Products> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-          elevation: 18,
+        elevation: 18,
+        onPressed: () {},
+        backgroundColor: Colors.blueAccent,
+        child: IconButton(
           onPressed: () {},
-          backgroundColor: Colors.blueAccent,
-          child: IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.add,
-              color: Colors.white,
-            ),
+          icon: const Icon(
+            Icons.add,
+            color: Colors.white,
           ),
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
 
@@ -209,7 +209,10 @@ class _ProductsState extends State<Products> {
         currentIndex: _selectedItemPosition,
         onTap: (index) => setState(() => _selectedItemPosition = index),
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
           BottomNavigationBarItem(
               icon: Icon(Icons.inventory_2_outlined), label: 'Product'),
           BottomNavigationBarItem(
