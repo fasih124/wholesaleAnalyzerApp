@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+// import '../models/seller_model.dart';
+import '../controllers/seller_controller.dart';
 
 class LogIn extends StatelessWidget {
   const LogIn({
@@ -58,15 +60,15 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             height: 50,
           ),
           Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(10),
-              child: const Text(
-                'Log in!',
-                style: TextStyle(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30),
-              ),
+            alignment: Alignment.center,
+            padding: const EdgeInsets.all(10),
+            child: const Text(
+              'Log in!',
+              style: TextStyle(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30),
+            ),
           ),
           Container(
             alignment: Alignment.center,
@@ -172,12 +174,28 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 ),
               ),
               onPressed: () {
-                // print(emailController.text);
-                // print(passwordController.text);
+                SellerController controller = SellerController();
+                controller
+                    .login(emailController.text, passwordController.text)
+                    .then((success) {
+                  if (success) {
+                    // Navigate to the seller dashboard or another page upon successful login
+                    Navigator.pushReplacementNamed(
+                        context, '/settings'); // Example navigation
+                  } else {
+                    // Handle login failure
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(SnackBar(content: Text('Login failed')));
+                  }
+                });
+                print(emailController.text);
+                print(passwordController.text);
               },
             ),
           ),
-          const SizedBox(height: 10,),
+          const SizedBox(
+            height: 10,
+          ),
           Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
             const Text(
               'Don\'t have an account?',
