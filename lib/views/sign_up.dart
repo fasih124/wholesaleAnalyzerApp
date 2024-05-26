@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../controllers/seller_controller.dart';
+
 class SignUp extends StatelessWidget {
   const SignUp({
     super.key,
@@ -24,9 +26,7 @@ class SignUp extends StatelessWidget {
         backgroundColor: Colors.blueAccent,
         //automaticallyImplyLeading: false,
         leading: IconButton(
-          onPressed: () {
-
-          },
+          onPressed: () {},
           icon: const Icon(
             Icons.arrow_back_ios,
             color: Colors.white,
@@ -137,7 +137,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             ),
           ),
           Container(
-            padding: const EdgeInsets.fromLTRB(5, 5, 5,0),
+            padding: const EdgeInsets.fromLTRB(5, 5, 5, 0),
             child: TextField(
               obscureText: true,
               controller: passwordController,
@@ -164,12 +164,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
             ),
           ),
-
-
-
           Container(
             alignment: Alignment.centerLeft,
-            padding: const EdgeInsets.fromLTRB(20,0,0,10),
+            padding: const EdgeInsets.fromLTRB(20, 0, 0, 10),
             child: const Text(
               'Password must be 8 characters long',
               style: TextStyle(
@@ -199,12 +196,38 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 ),
               ),
               onPressed: () {
-                print(nameController.text);
-                print(passwordController.text);
+                // print(nameController.text);
+                // print(passwordController.text);
+                SellerController controller = SellerController();
+                controller
+                    .signup(emailController.text, passwordController.text,
+                        nameController.text)
+                    .then((success) {
+                  if (success) {
+                    // Navigate to the seller dashboard or another page upon successful login
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          'Sign UP Sucessfully',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        backgroundColor: Colors.green,
+                      ),
+                    );
+                    Navigator.pushReplacementNamed(
+                        context, '/login'); // Example navigation
+                  } else {
+                    // Handle login failure
+                    ScaffoldMessenger.of(context)
+                        .showSnackBar(SnackBar(content: Text('Login failed')));
+                  }
+                });
               },
             ),
           ),
-          const SizedBox(height: 10,),
+          const SizedBox(
+            height: 10,
+          ),
           Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
             const Text(
               'Already have an account?',

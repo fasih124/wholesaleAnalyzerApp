@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:wholesale_analyzer_project/views/products.dart';
 import 'package:wholesale_analyzer_project/views/settings.dart';
 import 'views/log_in.dart';
-import'views/sign_up.dart';
-import'views/splash.dart';
+import 'views/sign_up.dart';
+import 'views/splash.dart';
 
 void main() => runApp(const MyApp());
 
@@ -17,13 +17,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: _title,
-      home: const Products(title: _title,),
+      home: const Splash(), //,const Products(title: _title,),
       routes: {
-        '/signup': (context) => const SignUp(title: _title,),
-        '/login': (context) => const LogIn(title: _title,),
-        '/settings':(context) => const Settings(),
+        '/signup': (context) => const SignUp(
+              title: _title,
+            ),
+        '/login': (context) => const LogIn(
+              title: _title,
+            ),
+        '/product': (context) => const Products(title: _title),
+        '/settings': (context) => const Settings(),
       },
     );
   }
 }
-

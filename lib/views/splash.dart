@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:wholesale_analyzer_project/views/log_in.dart';
 
 class Splash extends StatelessWidget {
   const Splash({super.key});
@@ -20,9 +23,18 @@ class MyStatefulWidget extends StatefulWidget {
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
+  void initState() {
+    super.initState();
+    // Delay for splash screen duration (e.g., 2 seconds)
+    Timer(const Duration(seconds: 3), () {
+      Navigator.pushReplacementNamed(context, '/login');
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return const Scaffold(
-        backgroundColor: Colors.blueAccent,     //for background color
+        backgroundColor: Colors.blueAccent, //for background color
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
