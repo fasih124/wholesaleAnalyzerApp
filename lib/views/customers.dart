@@ -41,23 +41,7 @@ class _CustomersState extends State<Customers> {
             fontSize: 26,
           ),
         ),
-        // no need for actions
-        // actions: [
-        //   Padding(
-        //     padding: const EdgeInsets.all(8.0),
-        //     child:
-        //     IconButton(
-        //       onPressed: () {
-        //         Navigator.pushNamed(context, '/settings');
-        //       },
-        //       icon: const Icon(
-        //         Icons.settings,
-        //         color: Colors.white,
-        //         size: 32,
-        //       ),
-        //     ),
-        //   ),
-        // ],
+
       ),
       body: const SingleChildScrollView(
         scrollDirection: Axis.vertical,

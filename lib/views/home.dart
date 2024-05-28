@@ -246,7 +246,7 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
-                      'Recent Invoice',
+                      'Recent Orders',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -256,12 +256,17 @@ class _HomeState extends State<Home> {
                       onPressed: () {
                         //Navigator.pushNamed(context, '/invoice');
                       },
-                      child: const Text(
+                      child: TextButton(
+                        onPressed: (){
+                        Navigator.pushNamed(context, '/orders');
+                        },
+                        child: const Text(
                         'Show All',
                         style: TextStyle(
                           color: Color.fromRGBO(128, 128, 128, 0.9),
                         ),
                       ),
+                    ),
                     ),
                   ],
                 ),
