@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:wholesale_analyzer_project/views/log_in.dart';
 
+import '../utility/shared_preferences.dart';
+
 class Splash extends StatelessWidget {
   const Splash({super.key});
 
@@ -26,8 +28,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   void initState() {
     super.initState();
     // Delay for splash screen duration (e.g., 2 seconds)
-    Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, '/login');
+    Timer(const Duration(seconds: 3), () async {
+      if (await SharedPrefsUtil.getLoginStatus()) {
+        Navigator.pushReplacementNamed(context, '/home');
+      } else {
+        Navigator.pushReplacementNamed(context, '/login');
+      }
     });
   }
 

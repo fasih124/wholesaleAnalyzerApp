@@ -18,17 +18,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: _title,
-      home: const Home(
-        title: _title,
-      ), //,const Products(title: _title,),
+      // home: const Splash(), //,const Products(title: _title,),
+      home: const Home(title: _title),
       routes: {
-        '/signup': (context) => const SignUp(
-              title: _title,
-            ),
-        '/login': (context) => const LogIn(
-              title: _title,
-            ),
+        '/signup': (context) => const SignUp(title: _title),
+        '/login': (context) => const LogIn(title: _title),
         '/product': (context) => const Products(title: _title),
+        '/home': (context) => const Home(title: _title),
         '/settings': (context) => const Settings(),
       },
     );

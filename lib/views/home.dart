@@ -5,6 +5,9 @@ import 'package:wholesale_analyzer_project/views/widgets/invoice_card_widget.dar
 import 'package:wholesale_analyzer_project/views/widgets/product_card_widget.dart';
 import 'package:wholesale_analyzer_project/views/widgets/snake_navbar_widget.dart';
 
+import '../controllers/product_controller.dart';
+import '../models/product_model.dart';
+
 class Home extends StatefulWidget {
   final String _title;
   const Home({
@@ -17,6 +20,18 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final productController = ProductController();
+  void assignProduct() async {
+    List<Product> products = await productController.getProduct();
+    print(products[0].data?.length);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    assignProduct();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,13 +61,14 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
           padding: EdgeInsets.all(20),
           child: Expanded(
             child: Column(
               children: [
+                //================= Customer ================================================================================================
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -74,7 +90,20 @@ class _HomeState extends State<Home> {
                 SizedBox(
                   height: 18,
                 ),
-                // Placeholder(),
+                // ListView.builder(
+                //   scrollDirection: Axis.horizontal,
+                //   itemCount: 2, // Replace with the actual number of items
+                //   itemBuilder: (context, index) {
+                //     return SizedBox(
+                //       width: 250,
+                //       height: 100,
+                //       child: Padding(
+                //         padding: EdgeInsets.symmetric(horizontal: 8.0),
+                //         child: CustomerCard(),
+                //       ),
+                //     );
+                //   },
+                // ),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
@@ -93,16 +122,16 @@ class _HomeState extends State<Home> {
                         height: 100,
                         child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 8.0),
-                          child: CustomerCard(),
+                          child: ProductCard(),
                         ),
                       ),
                     ],
                   ),
                 ),
-
                 SizedBox(
                   height: 28,
                 ),
+                //=================== Product ==============================================================================================
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -121,7 +150,6 @@ class _HomeState extends State<Home> {
                     ),
                   ],
                 ),
-
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
@@ -149,6 +177,7 @@ class _HomeState extends State<Home> {
                 SizedBox(
                   height: 28,
                 ),
+                //================= Invoices ================================================================================================
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
