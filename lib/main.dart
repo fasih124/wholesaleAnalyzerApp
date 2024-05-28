@@ -18,7 +18,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: _title,
-      home: const Splash(), //,const Products(title: _title,),
+      home: const Home(
+        title: _title,
+      ), //,const Products(title: _title,),
       routes: {
         '/signup': (context) => const SignUp(
               title: _title,
@@ -28,7 +30,6 @@ class MyApp extends StatelessWidget {
             ),
         '/product': (context) => const Products(title: _title),
         '/settings': (context) => const Settings(),
-
       },
     );
   }
