@@ -56,7 +56,9 @@ class _SettingsState extends State<Settings> {
           ],
         ),
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: const Icon(
             Icons.arrow_back_ios,
           ),
