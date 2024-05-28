@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wholesale_analyzer_project/views/add_customer.dart';
 import 'package:wholesale_analyzer_project/views/add_product.dart';
+import 'package:wholesale_analyzer_project/views/orders.dart';
 import 'package:wholesale_analyzer_project/views/product_details.dart';
 import 'package:wholesale_analyzer_project/views/update_customer.dart';
 import 'package:wholesale_analyzer_project/views/customer_details.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      //theme: ThemeData.dark(useMaterial3: true),
       title: _title,
       // home: const Splash(), //,const Products(title: _title,),
       // home: const Home(title: _title),
@@ -48,6 +50,7 @@ class MyApp extends StatelessWidget {
         // '/productDetails': (context) => const ProductDetails(id: 1,),
         '/addProduct': (context) => const AddProduct(),
         '/updateProduct': (context) => const UpdateProduct(),
+        '/orders': (context) => const Orders(title: _title,),
       },
     );
   }

@@ -43,7 +43,6 @@ class _CustomersState extends State<Customers> {
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
         automaticallyImplyLeading: false,
-
         title: Text(
           widget._title,
           style: const TextStyle(
@@ -52,7 +51,6 @@ class _CustomersState extends State<Customers> {
             fontSize: 26,
           ),
         ),
-        // no need for actions
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),

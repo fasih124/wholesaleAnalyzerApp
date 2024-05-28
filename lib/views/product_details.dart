@@ -58,7 +58,7 @@ class ProductDetails extends StatelessWidget {
                 color: Colors.white,
                 child: ListTile(
                   onTap: () {
-                    //to screen 1.5 update version
+
                   },
                   leading: const Icon(
                     Icons.inventory_2_outlined,
