@@ -24,6 +24,16 @@ class _ProductsState extends State<Products> {
       //backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          ),
+        ),
+        centerTitle: true,
         title: Text(
           widget._title,
           style: const TextStyle(

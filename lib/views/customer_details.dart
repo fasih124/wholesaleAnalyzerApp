@@ -148,10 +148,10 @@ class CustomerDetails extends StatelessWidget {
                           MaterialStatePropertyAll(Colors.blueAccent),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/addCustomer');
+                      Navigator.pushNamed(context, '/updateCustomer');
                     },
                     child: const Text(
-                      'Update',
+                      'Update Customer',
                       style: TextStyle(
                         color: Colors.white,
                       ),

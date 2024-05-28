@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wholesale_analyzer_project/models/customer_model.dart';
 import 'package:wholesale_analyzer_project/views/add_customer.dart';
+import 'package:wholesale_analyzer_project/views/update_customer.dart';
 import 'package:wholesale_analyzer_project/views/customer_details.dart';
 import 'package:wholesale_analyzer_project/views/customers.dart';
 import 'package:wholesale_analyzer_project/views/home.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: _title,
       home:
-      const Customers(
+      const Home(
         title: _title,
       ),
       routes: {
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         '/customers': (context) => const Customers(title: _title,),
         '/customerDetails': (context) => const CustomerDetails(),
         '/addCustomer': (context) => const AddCustomer(),
+        '/updateCustomer': (context) => const UpdateCustomer(),
       },
     );
   }
