@@ -46,36 +46,41 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Expanded(
             child: Column(
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'Customers',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(
-                      'Show All',
-                      style: TextStyle(
-                        color: Color.fromRGBO(128, 128, 128, 0.9),
+                    TextButton(
+                      onPressed: (){
+                        Navigator.pushNamed(context, '/customers');
+                      },
+                      child: const Text(
+                        'Show All',
+                        style: TextStyle(
+                          color: Color.fromRGBO(128, 128, 128, 0.9),
+                        ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 18,
                 ),
                 // Placeholder(),
-                SingleChildScrollView(
+                const SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -100,29 +105,34 @@ class _HomeState extends State<Home> {
                   ),
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 28,
                 ),
-                Row(
+                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'Products',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(
-                      'Show All',
-                      style: TextStyle(
-                        color: Color.fromRGBO(128, 128, 128, 0.9),
+                    TextButton(
+                      onPressed: (){
+                        Navigator.pushNamed(context, '/product');
+                      },
+                      child: const Text(
+                        'Show All',
+                        style: TextStyle(
+                          color: Color.fromRGBO(128, 128, 128, 0.9),
+                        ),
                       ),
                     ),
                   ],
                 ),
 
-                SingleChildScrollView(
+                const SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -146,34 +156,39 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 28,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'Recent Invoice',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(
-                      'Show All',
-                      style: TextStyle(
-                        color: Color.fromRGBO(128, 128, 128, 0.9),
+                    TextButton(
+                      onPressed: (){
+                        //Navigator.pushNamed(context, '/invoice');
+                      },
+                      child: const Text(
+                        'Show All',
+                        style: TextStyle(
+                          color: Color.fromRGBO(128, 128, 128, 0.9),
+                        ),
                       ),
                     ),
                   ],
                 ),
-                Column(
+                const Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
                       // width: 250, //Centers the card on un-comment
-                      height: 150,
+                      height: 100,
                       child: Padding(
                         padding: EdgeInsets.symmetric(vertical: 8.0),
                         child: InvoiceCard(), //bug in this widget class

@@ -7,19 +7,21 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Card(
+    return Card(
       elevation: 5,
       color: Colors.white,
       child: ListTile(
-        leading: Icon(
+        onTap: (){},
+        leading: const Icon(
           Icons.inventory,
           size: 46,
         ),
-        title: Text('Desert Eagle', style: TextStyle(
+        title: const Text('Desert Eagle', style: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
-        ),),
-        subtitle: Text('\$ Free Trial',style: TextStyle(fontSize: 16),),
+        ),
+        ),
+        subtitle: const Text('\$ Free Trial',style: TextStyle(fontSize: 16),),
         //trailing: Icon(Icons.more_vert),
       ),
     );
