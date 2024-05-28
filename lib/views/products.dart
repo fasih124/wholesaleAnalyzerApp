@@ -4,6 +4,9 @@ import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:wholesale_analyzer_project/views/widgets/product_card_widget.dart';
 import 'package:wholesale_analyzer_project/views/widgets/snake_navbar_widget.dart';
 
+import '../controllers/product_controller.dart';
+import '../models/product_model.dart';
+
 class Products extends StatefulWidget {
   final String _title;
 
@@ -17,7 +20,26 @@ class Products extends StatefulWidget {
 }
 
 class _ProductsState extends State<Products> {
-  int _selectedItemPosition = 0; //for navigation bar
+  final productController = ProductController();
+
+  late List<Product> products;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _fetchProductData(); // Call the function to fetch data on initialization
+  }
+
+  Future<void> _fetchProductData() async {
+    try {
+      products = await productController.getProduct();
+
+      setState(() {}); // Notify the widget to rebuild with updated data
+    } catch (error) {
+      print(error); // Handle errors appropriately (e.g., show error message)
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,16 +47,7 @@ class _ProductsState extends State<Products> {
       //backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: Colors.white,
-          ),
-        ),
-        centerTitle: true,
+        automaticallyImplyLeading: false,
         title: Text(
           widget._title,
           style: const TextStyle(
@@ -59,32 +72,59 @@ class _ProductsState extends State<Products> {
           ),
         ],
       ),
-      body: const SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Products',
-                style: TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
-                ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text(
+              'Products',
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
               ),
-              SizedBox(
-                height: 16,
-              ),
-              // ProductCard(),
-              // ProductCard(),
-              // ProductCard(),
-              // ProductCard(),
-
-              //Placeholder()
-            ],
+            ),
           ),
-        ),
+          SizedBox(
+            height: 30,
+          ),
+          FutureBuilder<List<Product>>(
+            future: productController.getProduct(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                final products = snapshot.data!;
+                return SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: List.generate(products[0].data!.length, (index) {
+                      return SizedBox(
+                        height: 100,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(vertical: 4.0),
+                          child: ProductCard(
+                            id: products[0].data?[index].productId ?? -1,
+                            name: products[0]
+                                    .data?[index]
+                                    .productName
+                                    ?.toString() ??
+                                '',
+                            price:
+                                products[0].data?[index].productPrice ?? 'N/A',
+                          ),
+                        ),
+                      );
+                    }),
+                  ),
+                );
+              } else if (snapshot.hasError) {
+                return Text('Error: Unable to get Product'); // Handle errors
+              }
+              return Center(
+                  child: CircularProgressIndicator()); // Show loading indicator
+            },
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         elevation: 18,
@@ -99,7 +139,9 @@ class _ProductsState extends State<Products> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
 
-      bottomNavigationBar: const Snake(),
+      bottomNavigationBar: const Snake(
+        position: 1,
+      ),
     );
   }
 }

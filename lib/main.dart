@@ -10,12 +10,11 @@ import 'package:wholesale_analyzer_project/views/customers.dart';
 import 'package:wholesale_analyzer_project/views/home.dart';
 import 'package:wholesale_analyzer_project/views/products.dart';
 import 'package:wholesale_analyzer_project/views/settings.dart';
-<<<<<<< HEAD
-=======
+
 import 'package:wholesale_analyzer_project/views/update_product.dart';
 import 'package:wholesale_analyzer_project/views/widgets/customer_card_widget.dart';
 import 'package:wholesale_analyzer_project/views/widgets/product_card_widget.dart';
->>>>>>> main
+
 import 'views/log_in.dart';
 import 'views/sign_up.dart';
 import 'views/splash.dart';
@@ -34,11 +33,9 @@ class MyApp extends StatelessWidget {
       //theme: ThemeData.dark(useMaterial3: true),
       title: _title,
       // home: const Splash(), //,const Products(title: _title,),
-      // home: const Home(title: _title),
+      home: const Home(title: _title),
       // home: const Customers(title: _title),
-      home:
-      const Center(child: Home(title: _title),
-      ),
+      // home: const Center(child: const Orders(title: _title)),
       routes: {
         '/signup': (context) => const SignUp(title: _title),
         '/login': (context) => const LogIn(title: _title),
@@ -49,7 +46,7 @@ class MyApp extends StatelessWidget {
         '/customerDetails': (context) => const CustomerDetails(),
         '/addCustomer': (context) => const AddCustomer(),
         '/updateCustomer': (context) => const UpdateCustomer(),
-        '/productDetails': (context) => const ProductDetails(),
+        '/productDetails': (context) => const ProductDetails(id: 1),
         '/addProduct': (context) => const AddProduct(),
         '/updateProduct': (context) => const UpdateProduct(),
         '/orders': (context) => const Orders(title: _title,),
