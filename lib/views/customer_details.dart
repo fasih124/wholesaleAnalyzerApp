@@ -42,7 +42,9 @@ class CustomerDetails extends StatelessWidget {
           ),
         ),
         actions: const [
-          SizedBox(width: 50,)
+          SizedBox(
+            width: 50,
+          )
         ],
       ),
       body: SingleChildScrollView(
@@ -164,12 +166,12 @@ class CustomerDetails extends StatelessWidget {
                 height: 30,
               ),
               // Placeholder()
-              const InvoiceCard(),
-              const InvoiceCard(),
-              const InvoiceCard(),
-              const InvoiceCard(),
-              const InvoiceCard(),
-              const InvoiceCard(),
+              // const InvoiceCard(),
+              // const InvoiceCard(),
+              // const InvoiceCard(),
+              // const InvoiceCard(),
+              // const InvoiceCard(),
+              // const InvoiceCard(),
             ],
           ),
         ),

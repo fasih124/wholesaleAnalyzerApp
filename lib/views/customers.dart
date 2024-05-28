@@ -8,7 +8,7 @@ class Customers extends StatefulWidget {
   const Customers({
     super.key,
     required String title,
-  }): _title = title;
+  }) : _title = title;
 
   @override
   State<Customers> createState() => _CustomersState();
@@ -19,7 +19,6 @@ class _CustomersState extends State<Customers> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       //backgroundColor: Colors.white,
       appBar: AppBar(
@@ -67,11 +66,11 @@ class _CustomersState extends State<Customers> {
               SizedBox(
                 height: 16,
               ),
-
-              CustomerCard(),
-              CustomerCard(),
-              CustomerCard(),
-              CustomerCard(),
+              //
+              // CustomerCard(),
+              // CustomerCard(),
+              // CustomerCard(),
+              // CustomerCard(),
 
               //Placeholder()
             ],
@@ -80,16 +79,14 @@ class _CustomersState extends State<Customers> {
       ),
       floatingActionButton: FloatingActionButton(
         elevation: 14,
-
         onPressed: () {
           Navigator.pushNamed(context, '/addCustomer');
         },
         backgroundColor: Colors.blueAccent,
-          child: const Icon(
-            Icons.add,
-            color: Colors.white,
-          ),
-
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
 

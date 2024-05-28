@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
 class InvoiceCard extends StatelessWidget {
+  final int id;
+  final String amount;
   const InvoiceCard({
     super.key,
+    required this.id,
+    required this.amount,
   });
 
   @override
   Widget build(BuildContext context) {
-    return const Card(
+    return Card(
       elevation: 3,
       color: Colors.white,
       child: ListTile(
@@ -17,9 +21,9 @@ class InvoiceCard extends StatelessWidget {
         ),
         title: Flexible(
           child: Text(
-            'Monolithic Suppressor', //the text length overflows the card size in long sized strings
+            'Invoice # ${this.id}', //the text length overflows the card size in long sized strings
             style: TextStyle(
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -28,17 +32,10 @@ class InvoiceCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              '25-May-2024',
+              '\$ ${this.amount}',
               style: TextStyle(
                 fontSize: 16,
-                // fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              '\$ 1',
-              style: TextStyle(
-                  fontSize: 16,
-              fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ],

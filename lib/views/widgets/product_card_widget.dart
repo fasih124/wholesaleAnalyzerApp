@@ -19,7 +19,9 @@ class ProductCard extends StatelessWidget {
       color: Colors.white,
       child: ListTile(
         onTap: () {
+          print("----------"); // Access the id property directly
           print(id); // Access the id property directly
+          print("----------"); // Access the id property directly
         },
         leading: const Icon(
           Icons.inventory,
@@ -28,13 +30,13 @@ class ProductCard extends StatelessWidget {
         title: Text(
           name, // Access the name property directly
           style: const TextStyle(
-            fontSize: 20,
+            fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
         ),
         subtitle: Text(
           '\$$price', // Concatenate string with price directly
-          style: const TextStyle(fontSize: 16),
+          style: const TextStyle(fontSize: 12),
         ),
         //trailing: Icon(Icons.more_vert),
       ),
