@@ -44,7 +44,7 @@ class _UpdateCustomerState extends State<UpdateCustomer> {
           },
           icon: const Icon(
             Icons.arrow_back_ios,
-            color: Colors.blue,
+            color: Colors.blueAccent,
           ),
         ),
         actions: const [
@@ -59,26 +59,14 @@ class _UpdateCustomerState extends State<UpdateCustomer> {
         child: Column(
           children: [
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
-            // Center(
-            //   child: Container(
-            //     decoration: BoxDecoration(
-            //       shape: BoxShape.circle,
-            //       border: Border.all(
-            //         color: Colors.transparent,
-            //         width: 1,
-            //       ),
-            //     ),
-            //     child: const CircleAvatar(
-            //       backgroundColor: Colors.blueAccent,
-            //       maxRadius: 60,
-            //       backgroundImage: AssetImage('assets/hitler.jpg'),
-            //     ),
-            //   ),
-            // ),
+            const Icon(Icons.person_outline,
+              color: Colors.green,
+              size: 90,
+            ),
             const SizedBox(
-              height: 70,
+              height: 20,
             ),
             const Text(
               'Please fill-in the details',

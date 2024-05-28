@@ -36,9 +36,10 @@ class _SettingsState extends State<Settings> {
           children: [
             Center(
               child: Text(
-                'Account & Settings',
+                'Profile Settings',
                 style: TextStyle(
-                  fontSize: 20,
+                  color: Colors.blueAccent,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -46,15 +47,7 @@ class _SettingsState extends State<Settings> {
             SizedBox(
               height: 10,
             ),
-            Center(
-              child: Text(
-                'Profile',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+
           ],
         ),
         leading: IconButton(
@@ -63,7 +56,7 @@ class _SettingsState extends State<Settings> {
           },
           icon: const Icon(
             Icons.arrow_back_ios,
-            color: Colors.blue,
+            color: Colors.blueAccent,
           ),
         ),
         actions: [

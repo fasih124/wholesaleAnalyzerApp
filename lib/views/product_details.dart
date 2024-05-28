@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wholesale_analyzer_project/views/widgets/invoice_card_widget.dart';
 
-import 'widgets/snake_navbar_widget.dart';
-
-class CustomerDetails extends StatelessWidget {
-  const CustomerDetails({
-    super.key,
-  });
+class ProductDetails extends StatelessWidget {
+  const ProductDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +19,7 @@ class CustomerDetails extends StatelessWidget {
           children: [
             Center(
               child: Text(
-                'Customer Details',
+                'Product Details',
                 style: TextStyle(
                   color: Colors.blueAccent,
                   fontSize: 24,
@@ -43,7 +39,9 @@ class CustomerDetails extends StatelessWidget {
           ),
         ),
         actions: const [
-          SizedBox(width: 50,)
+          SizedBox(
+            width: 50,
+          )
         ],
       ),
       body: SingleChildScrollView(
@@ -58,10 +56,12 @@ class CustomerDetails extends StatelessWidget {
                 elevation: 5,
                 color: Colors.white,
                 child: ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    //to screen 1.5 update version
+                  },
                   leading: const Icon(
-                    Icons.person_outline,
-                    color: Colors.deepPurpleAccent,
+                    Icons.inventory_2_outlined,
+                    color: Colors.green,
                     size: 70,
                   ),
                   title: const Column(
@@ -76,7 +76,7 @@ class CustomerDetails extends StatelessWidget {
                           //   width: 12,
                           // ),
                           Text(
-                            'John Doe',
+                            'Dirtoo Soap',
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
@@ -91,7 +91,7 @@ class CustomerDetails extends StatelessWidget {
                           //   width: 12,
                           // ),
                           Text(
-                            '03033332324',
+                            'Cleanliness on next-level',
                             style: TextStyle(
                               fontSize: 16,
                               //fontWeight: FontWeight.bold,
@@ -99,25 +99,25 @@ class CustomerDetails extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Row(
-                        children: [
-                          // Icon(Icons.mail_outline),
-                          // SizedBox(width: 12,),
-                          Text(
-                            'nigga@tuta.com',
-                            style: TextStyle(
-                              fontSize: 16,
-                              //fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
+                      // Row(
+                      //   children: [
+                      //     // Icon(Icons.mail_outline),
+                      //     // SizedBox(width: 12,),
+                      //     Text(
+                      //       'nigga@tuta.com',
+                      //       style: TextStyle(
+                      //         fontSize: 16,
+                      //         //fontWeight: FontWeight.bold,
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
                       Row(
                         children: [
                           // Icon(Icons.person_outline),
                           // SizedBox(width: 12,),
                           Text(
-                            'Lahore, Punjab',
+                            '\$ 1',
                             style: TextStyle(
                               fontSize: 16,
                               //fontWeight: FontWeight.bold,
@@ -135,25 +135,25 @@ class CustomerDetails extends StatelessWidget {
               ),
 
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    'Invoice',
-                    style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  // const Text(
+                  //   'Invoice',
+                  //   style: TextStyle(
+                  //     fontSize: 26,
+                  //     fontWeight: FontWeight.bold,
+                  //   ),
+                  // ),
                   ElevatedButton(
                     style: const ButtonStyle(
                       backgroundColor:
                           MaterialStatePropertyAll(Colors.blueAccent),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/updateCustomer');
+                      Navigator.pushNamed(context, '/updateProduct');
                     },
                     child: const Text(
-                      'Update Customer',
+                      'Update Product',
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -162,16 +162,6 @@ class CustomerDetails extends StatelessWidget {
                 ],
               ),
 
-              const SizedBox(
-                height: 30,
-              ),
-              // Placeholder()
-              const InvoiceCard(),
-              const InvoiceCard(),
-              const InvoiceCard(),
-              const InvoiceCard(),
-              const InvoiceCard(),
-              const InvoiceCard(),
             ],
           ),
         ),
