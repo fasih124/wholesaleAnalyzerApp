@@ -1,26 +1,18 @@
-/*  Minor bug
-If bg-color of 'body:' is changed,
-it applies to it but due to scroll behavior,
-the space for keyboard pop-up is set to white by default
-leaving that area white-colored.
-To make that invisible, keep the screen bg-color white. (Big Brain Time)
-*/
-
 import 'package:flutter/material.dart';
 
-class Settings extends StatefulWidget {
-  const Settings({super.key});
+class AddCustomer extends StatefulWidget {
+  const AddCustomer({super.key});
 
   @override
-  State<Settings> createState() => _SettingsState();
+  State<AddCustomer> createState() => _AddCustomerState();
 }
 
-class _SettingsState extends State<Settings> {
-  TextEditingController setFullname = TextEditingController();
-  TextEditingController setEmail = TextEditingController();
-  TextEditingController setPassword = TextEditingController();
-  TextEditingController setPhone = TextEditingController();
-  TextEditingController setAddress = TextEditingController();
+class _AddCustomerState extends State<AddCustomer> {
+  TextEditingController addFullname = TextEditingController();
+  TextEditingController addEmail = TextEditingController();
+  TextEditingController addPhone = TextEditingController();
+  TextEditingController addAddress = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -36,25 +28,14 @@ class _SettingsState extends State<Settings> {
           children: [
             Center(
               child: Text(
-                'Account & Settings',
+                'Add Customer',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 26,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
-            Center(
-              child: Text(
-                'Profile',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+
           ],
         ),
         leading: IconButton(
@@ -66,15 +47,9 @@ class _SettingsState extends State<Settings> {
             color: Colors.blue,
           ),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              size: 28,
-              Icons.edit_outlined,
-              color: Colors.blueAccent,
-            ),
-          )
+        actions: const [
+          //sets the title to center
+        SizedBox(width: 40,)
         ],
       ),
       body: SingleChildScrollView(
@@ -86,30 +61,31 @@ class _SettingsState extends State<Settings> {
             const SizedBox(
               height: 20,
             ),
-            Center(
-              child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Colors.transparent,
-                    width: 1,
-                  ),
-                ),
-                child: const CircleAvatar(
-                  backgroundColor: Colors.blueAccent,
-                  maxRadius: 60,
-                  backgroundImage: AssetImage('assets/hitler.jpg'),
-                ),
-              ),
-            ),
+            // Center(
+            //   child: Container(
+            //     decoration: BoxDecoration(
+            //       shape: BoxShape.circle,
+            //       border: Border.all(
+            //         color: Colors.transparent,
+            //         width: 1,
+            //       ),
+            //     ),
+            //     child: const CircleAvatar(
+            //       backgroundColor: Colors.blueAccent,
+            //       maxRadius: 60,
+            //       backgroundImage: AssetImage('assets/hitler.jpg'),
+            //     ),
+            //   ),
+            // ),
             const SizedBox(
-              height: 10,
+              height: 70,
             ),
             const Text(
-              'Hitler Bin Ladin',
+              'Please fill-in the details',
               style: TextStyle(
+                color: Colors.blueGrey,
                 fontSize: 20,
-                fontWeight: FontWeight.bold,
+                //fontWeight: FontWeight.bold,
               ),
             ),
             Container(
@@ -128,14 +104,14 @@ class _SettingsState extends State<Settings> {
                     ),
                     TextField(
                       textAlign: TextAlign.left,
-                      controller: setFullname,
+                      controller: addFullname,
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(
                             20, 5, 20, 5), //controls the field size
                         hintText: 'Hitler Bin Ladin', //fetch from DB
                         hintStyle: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                          // fontWeight: FontWeight.bold,
                           color: Colors.black,
                         ),
                         filled: true,
@@ -146,7 +122,7 @@ class _SettingsState extends State<Settings> {
                               color: Colors.transparent,
                             ),
                             borderRadius:
-                                BorderRadius.all(Radius.circular(32))),
+                            BorderRadius.all(Radius.circular(32))),
 
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -168,14 +144,14 @@ class _SettingsState extends State<Settings> {
                     ),
                     TextField(
                       textAlign: TextAlign.left,
-                      controller: setEmail,
+                      controller: addEmail,
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(
                             20, 5, 20, 5), //controls the field size
                         hintText: 'hitler@gmail.com', //fetch from DB
                         hintStyle: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                         // fontWeight: FontWeight.bold,
                           color: Colors.black,
                         ),
                         filled: true,
@@ -186,7 +162,7 @@ class _SettingsState extends State<Settings> {
                               color: Colors.transparent,
                             ),
                             borderRadius:
-                                BorderRadius.all(Radius.circular(32))),
+                            BorderRadius.all(Radius.circular(32))),
 
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -197,47 +173,7 @@ class _SettingsState extends State<Settings> {
                         //labelText: 'User Name',
                       ),
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const Text(
-                      'Password',
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    ),
-                    TextField(
-                      obscureText: true,
-                      textAlign: TextAlign.left,
-                      controller: setPassword,
-                      decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(
-                            20, 5, 20, 5), //controls the field size
-                        hintText: '*********', //fetch from DB
-                        hintStyle: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                        filled: true,
-                        fillColor: Color.fromRGBO(206, 206, 206, 0.5),
 
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                            ),
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(32))),
-
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                          ),
-                          borderRadius: BorderRadius.all(Radius.circular(32)),
-                        ),
-                        //labelText: 'User Name',
-                      ),
-                    ),
                     const SizedBox(
                       height: 20,
                     ),
@@ -249,7 +185,7 @@ class _SettingsState extends State<Settings> {
                     ),
                     TextField(
                       textAlign: TextAlign.left,
-                      controller: setPhone,
+                      controller: addPhone,
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(
                             20, 5, 20, 5), //controls the field size
@@ -267,7 +203,7 @@ class _SettingsState extends State<Settings> {
                               color: Colors.transparent,
                             ),
                             borderRadius:
-                                BorderRadius.all(Radius.circular(32))),
+                            BorderRadius.all(Radius.circular(32))),
 
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -289,7 +225,7 @@ class _SettingsState extends State<Settings> {
                     ),
                     TextField(
                       textAlign: TextAlign.left,
-                      controller: setAddress,
+                      controller: addAddress,
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(
                             20, 5, 20, 5), //controls the field size
@@ -307,7 +243,7 @@ class _SettingsState extends State<Settings> {
                               color: Colors.transparent,
                             ),
                             borderRadius:
-                                BorderRadius.all(Radius.circular(32))),
+                            BorderRadius.all(Radius.circular(32))),
 
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -319,42 +255,19 @@ class _SettingsState extends State<Settings> {
                       ),
                     ),
                     Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 35.0),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: const ButtonStyle(
-                                  elevation: MaterialStatePropertyAll(3),
-                                  backgroundColor:
-                                      MaterialStatePropertyAll(Colors.red)),
-                              child: const Text(
-                                'Logout',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 35.0),
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: const ButtonStyle(
+                              elevation: MaterialStatePropertyAll(3),
+                              backgroundColor:
+                              MaterialStatePropertyAll(Colors.blueAccent)),
+                          child: const Text(
+                            'Update info',
+                            style: TextStyle(color: Colors.white),
                           ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 35.0),
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: const ButtonStyle(
-                                  elevation: MaterialStatePropertyAll(3),
-                                  backgroundColor:
-                                  MaterialStatePropertyAll(Colors.blueAccent)),
-                              child: const Text(
-                                'Update',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
                   ],

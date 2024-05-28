@@ -24,9 +24,24 @@ class InvoiceCard extends StatelessWidget {
             ),
           ),
         ),
-        subtitle: Text(
-          '\$ 1',
-          style: TextStyle(fontSize: 16),
+        subtitle: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              '25-May-2024',
+              style: TextStyle(
+                fontSize: 16,
+                // fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              '\$ 1',
+              style: TextStyle(
+                  fontSize: 16,
+              fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
         //trailing: Icon(Icons.more_vert),
       ),
