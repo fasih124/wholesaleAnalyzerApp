@@ -2,7 +2,7 @@
     <application
         android:label="wholesale_analyzer_project"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_asasakeeper">
         <activity
             android:name=".MainActivity"
             android:exported="true"
