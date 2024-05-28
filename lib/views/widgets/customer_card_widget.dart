@@ -1,14 +1,30 @@
 import 'package:flutter/material.dart';
 
+class CustomerInfo {
+  final int id;
+  final String name;
+  final String phone;
+  final String address;
+
+  CustomerInfo({
+    required this.id,
+    required this.name,
+    required this.phone,
+    required this.address,
+  });
+}
+
 class CustomerCard extends StatelessWidget {
   final int id;
   final String name;
+  final String phone;
   final String address;
 
   const CustomerCard({
     super.key,
     required this.id,
     required this.name,
+    required this.phone,
     required this.address,
   });
 
@@ -19,9 +35,15 @@ class CustomerCard extends StatelessWidget {
       color: Colors.white,
       child: ListTile(
         onTap: () {
-          print(id);
+          final customerDetails = CustomerInfo(
+            id: id,
+            name: name,
+            phone: phone,
+            address: address,
+          );
+
           Navigator.pushNamed(context, '/customerDetails',
-              arguments: {'id': id});
+              arguments: customerDetails);
         },
         leading: const Icon(
           Icons.person_outline,

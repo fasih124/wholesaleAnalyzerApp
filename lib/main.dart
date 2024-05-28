@@ -32,11 +32,9 @@ class MyApp extends StatelessWidget {
       //theme: ThemeData.dark(useMaterial3: true),
       title: _title,
       // home: const Splash(), //,const Products(title: _title,),
-      // home: const Home(title: _title),
+      home: const Home(title: _title),
       // home: const Customers(title: _title),
-      home: const Center(
-        child: Home(title: _title),
-      ),
+      // home: const Center(child: const Orders(title: _title)),
       routes: {
         '/signup': (context) => const SignUp(title: _title),
         '/login': (context) => const LogIn(title: _title),
@@ -44,13 +42,13 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const Home(title: _title),
         '/settings': (context) => const Settings(),
         '/customers': (context) => const Customers(title: _title),
-        // '/customerDetails': (context) => const CustomerDetails(),
+        '/customerDetails': (context) => const CustomerDetails(),
         '/addCustomer': (context) => const AddCustomer(),
         '/updateCustomer': (context) => const UpdateCustomer(),
-        // '/productDetails': (context) => const ProductDetails(id: 1,),
+        '/productDetails': (context) => const ProductDetails(id: 1),
         '/addProduct': (context) => const AddProduct(),
         '/updateProduct': (context) => const UpdateProduct(),
-        '/orders': (context) => const Orders(title: _title,),
+        '/orders': (context) => const Orders(title: _title),
       },
     );
   }

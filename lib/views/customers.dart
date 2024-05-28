@@ -105,6 +105,8 @@ class _CustomersState extends State<Customers> {
                             name: customers[0]?.data?[index]?.name as String,
                             address:
                                 customers[0]?.data?[index]?.address as String,
+                            phone: customers[0]?.data?[index]?.phoneNumber
+                                as String,
                           ),
                         ),
                       );

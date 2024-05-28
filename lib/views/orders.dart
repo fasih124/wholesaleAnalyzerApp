@@ -3,28 +3,46 @@ import 'package:wholesale_analyzer_project/views/widgets/customer_card_widget.da
 import 'package:wholesale_analyzer_project/views/widgets/invoice_card_widget.dart';
 import 'package:wholesale_analyzer_project/views/widgets/snake_navbar_widget.dart';
 
-class Orders extends StatelessWidget {
+import '../controllers/invoice_controller.dart';
+import '../models/invoice_model.dart';
+
+class Orders extends StatefulWidget {
   final String _title;
   const Orders({super.key, required String title}) : _title = title;
 
   @override
+  State<Orders> createState() => _OrdersState();
+}
+
+class _OrdersState extends State<Orders> {
+  final invoiceController = InvoiceController();
+  late List<Invoice> invoices;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchInvoiceData(); // Call the function to fetch data on initialization
+  }
+
+  Future<void> _fetchInvoiceData() async {
+    try {
+      invoices = await invoiceController.getInvoice();
+
+      setState(() {}); // Notify the widget to rebuild with updated data
+    } catch (error) {
+      print(error); // Handle errors appropriately (e.g., show error message)
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
+        automaticallyImplyLeading: false,
         centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: Colors.white,
-          ),
-        ),
         title: Text(
-          _title,
+          widget._title,
           style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -54,7 +72,7 @@ class Orders extends StatelessWidget {
                     style: const ButtonStyle(
                       elevation: MaterialStatePropertyAll(2),
                       backgroundColor: MaterialStatePropertyAll(Colors.white),
-                      //shape: MaterialStatePropertyAll(CircleBorder())
+//shape: MaterialStatePropertyAll(CircleBorder())
                     ),
                     child: const Icon(
                       Icons.add,
@@ -67,20 +85,55 @@ class Orders extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
+              FutureBuilder<List<Invoice>>(
+                future: invoiceController.getInvoice(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    final products = snapshot.data!;
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children:
+                          List.generate(invoices[0].data!.length, (index) {
+                        return SizedBox(
+                          // width: 250,
+                          height: 100,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(vertical: 8.0),
+                            child: invoices
+                                    .isEmpty // Use invoices directly from snapshot.data
+                                ? Text("No Invoice Yet!!!")
+                                : InvoiceCard(
+                                    id: invoices[0]?.data?[index]?.invoiceId
+                                        as int,
+                                    amount: invoices[0]?.data?[index]?.netAmount
+                                        as String),
+                          ),
+                        );
+                      }),
+                    );
+                  } else if (snapshot.hasError) {
+                    return Text(
+                        'Error: Unable to get Product'); // Handle errors
+                  }
+                  return Center(
+                      child:
+                          CircularProgressIndicator()); // Show loading indicator
+                },
+              ),
+// const InvoiceCard(),
+// const InvoiceCard(),
+// const InvoiceCard(),
+// const InvoiceCard(),
+// const InvoiceCard(),
 
-              // const InvoiceCard(),
-              // const InvoiceCard(),
-              // const InvoiceCard(),
-              // const InvoiceCard(),
-              // const InvoiceCard(),
-
-              //Placeholder()
+//Placeholder()
             ],
           ),
         ),
       ),
-
-      bottomNavigationBar: const Snake(),
+      bottomNavigationBar: const Snake(
+        position: 3,
+      ),
     );
   }
 }

@@ -154,6 +154,8 @@ class _HomeState extends State<Home> {
                                       as String,
                                   address: customers[0]?.data?[index]?.address
                                       as String,
+                                  phone: customers[0]?.data?[index]?.phoneNumber
+                                      as String,
                                 ),
                               ),
                             );
@@ -257,16 +259,16 @@ class _HomeState extends State<Home> {
                         //Navigator.pushNamed(context, '/invoice');
                       },
                       child: TextButton(
-                        onPressed: (){
-                        Navigator.pushNamed(context, '/orders');
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/orders');
                         },
                         child: const Text(
-                        'Show All',
-                        style: TextStyle(
-                          color: Color.fromRGBO(128, 128, 128, 0.9),
+                          'Show All',
+                          style: TextStyle(
+                            color: Color.fromRGBO(128, 128, 128, 0.9),
+                          ),
                         ),
                       ),
-                    ),
                     ),
                   ],
                 ),

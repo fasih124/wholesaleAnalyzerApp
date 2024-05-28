@@ -61,7 +61,7 @@ import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import '../home.dart';
 import '../products.dart'; // Assuming 'products.dart' contains the Products class
 import '../customers.dart';
-import '../settings.dart';
+import '../orders.dart';
 
 class Snake extends StatefulWidget {
   final int position; // Initial position (optional)
@@ -88,8 +88,8 @@ class _SnakeState extends State<Snake> {
       const Home(title: _title), // Replace with your actual screen construction
       const Products(title: _title),
       const Customers(title: _title),
-      const Settings(),
-    ]; // Replace with your actual screens
+      const Orders(title: _title),
+    ]; // Replace with your actual screens'/orders': (context) => const Orders(title: _title),
 
     return SnakeNavigationBar.color(
       backgroundColor: Colors.white,
