@@ -8,20 +8,45 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 5,
+      elevation: 3,
       color: Colors.white,
       child: ListTile(
-        onTap: (){},
+        onTap: (){
+          Navigator.pushNamed(context, '/productDetails');
+        },
         leading: const Icon(
+          color: Colors.green,
           Icons.inventory,
           size: 46,
         ),
-        title: const Text('Desert Eagle', style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
+        title: const Flexible(
+          child: Text(
+            'Desert Eagle', //the text length overflows the card size in long sized strings
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
+        subtitle: const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Gun',
+              style: TextStyle(
+                fontSize: 16,
+                // fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              '\$ 10',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
-        subtitle: const Text('\$ Free Trial',style: TextStyle(fontSize: 16),),
         //trailing: Icon(Icons.more_vert),
       ),
     );

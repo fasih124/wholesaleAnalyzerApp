@@ -13,6 +13,7 @@ class InvoiceCard extends StatelessWidget {
       child: ListTile(
         leading: Icon(
           Icons.receipt,
+          color: Colors.orange,
           size: 46,
         ),
         title: Flexible(

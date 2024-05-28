@@ -16,6 +16,7 @@ class CustomerCard extends StatelessWidget {
         },
         leading: const Icon(
           Icons.person_outline,
+          color: Colors.deepPurpleAccent,
           size: 48,
         ),
         title: const Text(
