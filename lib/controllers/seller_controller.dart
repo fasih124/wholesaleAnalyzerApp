@@ -1,8 +1,7 @@
 import 'dart:convert';
-import 'dart:js';
-import 'package:flutter/material.dart';
 import "package:http/http.dart" as http;
 import '../models/seller_model.dart';
+import '../utility/shared_preferences.dart';
 
 class SellerController {
   static const String _baseUrl = 'http://localhost:3000/sellers';
@@ -31,7 +30,9 @@ class SellerController {
         if (_currentSeller?.data?.isNotEmpty == true) {
           _sellerID =
               _currentSeller!.data![0].sellerId.toString(); // Access sellerId
-          print("seller ID is : " + _sellerID);
+          // print("seller ID is : " + _sellerID);
+          SharedPrefsUtil.saveSellerId(_sellerID);
+          SharedPrefsUtil.saveLoginStatus(true);
         } else {
           print('Error: _currentSeller or its data list is null or empty');
         }
