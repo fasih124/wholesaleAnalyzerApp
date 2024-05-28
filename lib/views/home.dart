@@ -314,7 +314,9 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
-      bottomNavigationBar: const Snake(),
+      bottomNavigationBar: const Snake(
+        position: 0,
+      ),
     );
   }
 }

@@ -20,7 +20,8 @@ class CustomerCard extends StatelessWidget {
       child: ListTile(
         onTap: () {
           print(id);
-          Navigator.pushNamed(context, '/customerDetails');
+          Navigator.pushNamed(context, '/customerDetails',
+              arguments: {'id': id});
         },
         leading: const Icon(
           Icons.person_outline,

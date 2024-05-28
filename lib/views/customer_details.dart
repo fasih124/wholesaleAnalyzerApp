@@ -4,8 +4,10 @@ import 'package:wholesale_analyzer_project/views/widgets/invoice_card_widget.dar
 import 'widgets/snake_navbar_widget.dart';
 
 class CustomerDetails extends StatelessWidget {
+  final int id;
   const CustomerDetails({
     super.key,
+    required this.id,
   });
 
   @override
