@@ -177,7 +177,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   if (success) {
                     // Navigate to the seller dashboard or another page upon successful login
                     Navigator.pushReplacementNamed(
-                        context, '/product'); // Example navigation
+                        context, '/home'); // Example navigation
                   } else {
                     // Handle login failure
                     ScaffoldMessenger.of(context)

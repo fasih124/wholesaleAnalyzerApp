@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="wholesale_analyzer_project"
+        android:label="Asasa Keeper"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_asasakeeper">
         <activity

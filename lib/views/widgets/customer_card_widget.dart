@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
 class CustomerCard extends StatelessWidget {
+  final int id;
+  final String name;
+  final String address;
+
   const CustomerCard({
     super.key,
+    required this.id,
+    required this.name,
+    required this.address,
   });
 
   @override
@@ -11,7 +18,8 @@ class CustomerCard extends StatelessWidget {
       elevation: 5,
       color: Colors.white,
       child: ListTile(
-        onTap: (){
+        onTap: () {
+          print(id);
           Navigator.pushNamed(context, '/customerDetails');
         },
         leading: const Icon(
@@ -19,17 +27,17 @@ class CustomerCard extends StatelessWidget {
           color: Colors.deepPurpleAccent,
           size: 48,
         ),
-        title: const Text(
-          'John Doe',
+        title: Text(
+          name,
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
         ),
 
-        subtitle: const Text(
-          'Manawala',
-          style: TextStyle(fontSize: 16),
+        subtitle: Text(
+          address,
+          style: TextStyle(fontSize: 12),
         ),
         //trailing: Icon(Icons.more_vert),
       ),

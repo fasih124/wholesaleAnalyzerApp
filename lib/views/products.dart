@@ -76,10 +76,10 @@ class _ProductsState extends State<Products> {
               SizedBox(
                 height: 16,
               ),
-              ProductCard(),
-              ProductCard(),
-              ProductCard(),
-              ProductCard(),
+              // ProductCard(),
+              // ProductCard(),
+              // ProductCard(),
+              // ProductCard(),
 
               //Placeholder()
             ],
@@ -93,9 +93,9 @@ class _ProductsState extends State<Products> {
         },
         backgroundColor: Colors.blueAccent,
         child: const Icon(
-            Icons.add,
-            color: Colors.white,
-          ),
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
 

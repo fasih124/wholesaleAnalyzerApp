@@ -4,7 +4,7 @@ import '../models/seller_model.dart';
 import '../utility/shared_preferences.dart';
 
 class SellerController {
-  static const String _baseUrl = 'http://localhost:3000/sellers';
+  static const String _baseUrl = 'http://localhost:3300/sellers';
   late String _sellerID;
   Seller? _currentSeller;
 
