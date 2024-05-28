@@ -7,21 +7,29 @@ class CustomerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Card(
+    return Card(
       elevation: 5,
       color: Colors.white,
       child: ListTile(
-        leading: Icon(
+        onTap: (){
+          Navigator.pushNamed(context, '/customerDetails');
+        },
+        leading: const Icon(
           Icons.person_outline,
           size: 48,
         ),
-        title: Text('John Doe', style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),),
-        subtitle: Text('Manawala', style: TextStyle(
-          fontSize: 16
-        ),),
+        title: const Text(
+          'John Doe',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+
+        subtitle: const Text(
+          'Manawala',
+          style: TextStyle(fontSize: 16),
+        ),
         //trailing: Icon(Icons.more_vert),
       ),
     );
