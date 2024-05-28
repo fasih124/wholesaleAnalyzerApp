@@ -23,6 +23,16 @@ class _CustomersState extends State<Customers> {
       //backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          ),
+        ),
         title: Text(
           widget._title,
           style: const TextStyle(

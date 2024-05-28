@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class AddCustomer extends StatefulWidget {
-  const AddCustomer({super.key});
+class UpdateCustomer extends StatefulWidget {
+  const UpdateCustomer({super.key});
 
   @override
-  State<AddCustomer> createState() => _AddCustomerState();
+  State<UpdateCustomer> createState() => _UpdateCustomerState();
 }
 
-class _AddCustomerState extends State<AddCustomer> {
-  TextEditingController addFullname = TextEditingController();
-  TextEditingController addEmail = TextEditingController();
-  TextEditingController addPhone = TextEditingController();
-  TextEditingController addAddress = TextEditingController();
+class _UpdateCustomerState extends State<UpdateCustomer> {
+  TextEditingController updateFullname = TextEditingController();
+  TextEditingController updateEmail = TextEditingController();
+  TextEditingController updatePhone = TextEditingController();
+  TextEditingController updateAddress = TextEditingController();
 
 
   @override
@@ -28,9 +28,8 @@ class _AddCustomerState extends State<AddCustomer> {
           children: [
             Center(
               child: Text(
-                'Add Customer',
+                'Update Customer',
                 style: TextStyle(
-                  color: Colors.blueAccent,
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
                 ),
@@ -63,7 +62,7 @@ class _AddCustomerState extends State<AddCustomer> {
               height: 10,
             ),
             const Icon(Icons.person_outline,
-              color: Colors.deepPurpleAccent,
+              color: Colors.green,
               size: 90,
             ),
             const SizedBox(
@@ -93,7 +92,7 @@ class _AddCustomerState extends State<AddCustomer> {
                     ),
                     TextField(
                       textAlign: TextAlign.left,
-                      controller: addFullname,
+                      controller: updateFullname,
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(
                             20, 5, 20, 5), //controls the field size
@@ -133,7 +132,7 @@ class _AddCustomerState extends State<AddCustomer> {
                     ),
                     TextField(
                       textAlign: TextAlign.left,
-                      controller: addEmail,
+                      controller: updateEmail,
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(
                             20, 5, 20, 5), //controls the field size
@@ -174,7 +173,7 @@ class _AddCustomerState extends State<AddCustomer> {
                     ),
                     TextField(
                       textAlign: TextAlign.left,
-                      controller: addPhone,
+                      controller: updatePhone,
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(
                             20, 5, 20, 5), //controls the field size
@@ -214,7 +213,7 @@ class _AddCustomerState extends State<AddCustomer> {
                     ),
                     TextField(
                       textAlign: TextAlign.left,
-                      controller: addAddress,
+                      controller: updateAddress,
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(
                             20, 5, 20, 5), //controls the field size
@@ -253,7 +252,7 @@ class _AddCustomerState extends State<AddCustomer> {
                               backgroundColor:
                               MaterialStatePropertyAll(Colors.blueAccent)),
                           child: const Text(
-                            'Add Customer',
+                            'Update info',
                             style: TextStyle(color: Colors.white),
                           ),
                         ),

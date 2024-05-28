@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class AddCustomer extends StatefulWidget {
-  const AddCustomer({super.key});
+class AddProduct extends StatefulWidget {
+  const AddProduct({super.key});
 
   @override
-  State<AddCustomer> createState() => _AddCustomerState();
+  State<AddProduct> createState() => _AddProductState();
 }
 
-class _AddCustomerState extends State<AddCustomer> {
-  TextEditingController addFullname = TextEditingController();
-  TextEditingController addEmail = TextEditingController();
-  TextEditingController addPhone = TextEditingController();
-  TextEditingController addAddress = TextEditingController();
+class _AddProductState extends State<AddProduct> {
 
+  TextEditingController addProductName = TextEditingController();
+  TextEditingController addProductDetail = TextEditingController();
+  TextEditingController addQuantity = TextEditingController();
+  TextEditingController addPrice = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class _AddCustomerState extends State<AddCustomer> {
           children: [
             Center(
               child: Text(
-                'Add Customer',
+                'Add Product',
                 style: TextStyle(
                   color: Colors.blueAccent,
                   fontSize: 26,
@@ -50,7 +50,7 @@ class _AddCustomerState extends State<AddCustomer> {
         ),
         actions: const [
           //sets the title to center
-        SizedBox(width: 40,)
+          SizedBox(width: 40,)
         ],
       ),
       body: SingleChildScrollView(
@@ -60,11 +60,12 @@ class _AddCustomerState extends State<AddCustomer> {
         child: Column(
           children: [
             const SizedBox(
-              height: 10,
+              height: 20,
             ),
-            const Icon(Icons.person_outline,
-              color: Colors.deepPurpleAccent,
-              size: 90,
+
+            const Icon(Icons.inventory,
+              color: Colors.green,
+              size: 70,
             ),
             const SizedBox(
               height: 20,
@@ -86,22 +87,22 @@ class _AddCustomerState extends State<AddCustomer> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      'Full Name',
+                      'Product Name',
                       style: TextStyle(
                         fontSize: 20,
                       ),
                     ),
                     TextField(
                       textAlign: TextAlign.left,
-                      controller: addFullname,
+                      controller: addProductName,
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(
                             20, 5, 20, 5), //controls the field size
-                        hintText: 'Hitler Bin Ladin', //fetch from DB
+                        hintText: 'Dirtoo Soap', //fetch from DB
                         hintStyle: TextStyle(
                           fontSize: 14,
                           // fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          color: Colors.grey,
                         ),
                         filled: true,
                         fillColor: Color.fromRGBO(206, 206, 206, 0.5),
@@ -126,22 +127,22 @@ class _AddCustomerState extends State<AddCustomer> {
                       height: 20,
                     ),
                     const Text(
-                      'Email',
+                      'Detail',
                       style: TextStyle(
                         fontSize: 20,
                       ),
                     ),
                     TextField(
                       textAlign: TextAlign.left,
-                      controller: addEmail,
+                      controller: addProductDetail,
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(
                             20, 5, 20, 5), //controls the field size
-                        hintText: 'hitler@gmail.com', //fetch from DB
+                        hintText: 'Family pack', //fetch from DB
                         hintStyle: TextStyle(
                           fontSize: 14,
-                         // fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          // fontWeight: FontWeight.bold,
+                          color: Colors.grey,
                         ),
                         filled: true,
                         fillColor: Color.fromRGBO(206, 206, 206, 0.5),
@@ -167,22 +168,22 @@ class _AddCustomerState extends State<AddCustomer> {
                       height: 20,
                     ),
                     const Text(
-                      'Phone Number',
+                      'Quantity',
                       style: TextStyle(
                         fontSize: 20,
                       ),
                     ),
-                    TextField(
+                     TextField(
                       textAlign: TextAlign.left,
-                      controller: addPhone,
+                      controller: addQuantity,
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(
                             20, 5, 20, 5), //controls the field size
-                        hintText: '1234325345', //fetch from DB
+                        hintText: '15', //fetch from DB
                         hintStyle: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w300,
-                          color: Colors.black,
+                          color: Colors.grey,
                         ),
                         filled: true,
                         fillColor: Color.fromRGBO(206, 206, 206, 0.5),
@@ -207,22 +208,23 @@ class _AddCustomerState extends State<AddCustomer> {
                       height: 20,
                     ),
                     const Text(
-                      'Address',
+                      'Price',
                       style: TextStyle(
                         fontSize: 20,
                       ),
                     ),
-                    TextField(
+                     TextField(
                       textAlign: TextAlign.left,
-                      controller: addAddress,
+                      controller: addPrice,
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(
                             20, 5, 20, 5), //controls the field size
-                        hintText: 'Germany', //fetch from DB
+                        prefix: Text('Rs. ', style: TextStyle(color:  Colors.black),),
+                        hintText: '150',//fetch from DB
                         hintStyle: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w300,
-                          color: Colors.black,
+                          color: Colors.grey,
                         ),
                         filled: true,
                         fillColor: Color.fromRGBO(206, 206, 206, 0.5),
@@ -253,7 +255,7 @@ class _AddCustomerState extends State<AddCustomer> {
                               backgroundColor:
                               MaterialStatePropertyAll(Colors.blueAccent)),
                           child: const Text(
-                            'Add Customer',
+                            'Add Product',
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
