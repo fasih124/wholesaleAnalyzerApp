@@ -9,12 +9,7 @@ class ProductController {
     final response = await http.get(Uri.parse(_baseUrl));
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body);
-      // final List<dynamic> products = data['data'];
-      // print("===============");
-      // print("===============");
-      // print(products);
-      // print("===============");
-      // print("===============");
+
       return [Product.fromJson(data)];
     } else {
       throw Exception('Failed to fetch products');

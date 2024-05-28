@@ -21,15 +21,21 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final productController = ProductController();
-  void assignProduct() async {
-    List<Product> products = await productController.getProduct();
-    print(products[0].data?.length);
-  }
-
+  late List<Product> products;
+  @override
   @override
   void initState() {
     super.initState();
-    assignProduct();
+    _fetchData(); // Call the function to fetch data on initialization
+  }
+
+  Future<void> _fetchData() async {
+    try {
+      products = await productController.getProduct();
+      setState(() {}); // Notify the widget to rebuild with updated data
+    } catch (error) {
+      print(error); // Handle errors appropriately (e.g., show error message)
+    }
   }
 
   @override
@@ -113,29 +119,22 @@ class _HomeState extends State<Home> {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
+                    children: List.generate(10, (index) {
+                      return SizedBox(
                         width: 250,
                         height: 100,
                         child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 8.0),
                           child: CustomerCard(),
                         ),
-                      ),
-                      SizedBox(
-                        width: 250,
-                        height: 100,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8.0),
-                          child: ProductCard(),
-                        ),
-                      ),
-                    ],
+                      );
+                    }),
                   ),
                 ),
                 SizedBox(
                   height: 28,
                 ),
+                //================= product ================================================================================================
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -159,28 +158,29 @@ class _HomeState extends State<Home> {
                     ),
                   ],
                 ),
-                const SingleChildScrollView(
+                SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
+                    children: List.generate(products[0].data!.length, (index) {
+                      return SizedBox(
                         width: 250,
                         height: 100,
                         child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 8.0),
-                          child: ProductCard(),
+                          child: products.isEmpty
+                              ? Text("No Product Yet!!!")
+                              : ProductCard(
+                                  id: products[0]?.data?[index]?.productId
+                                      as int,
+                                  name: products[0]?.data?[index]?.productName
+                                      as String,
+                                  price: products[0]?.data?[index]?.productPrice
+                                      as String,
+                                ),
                         ),
-                      ),
-                      SizedBox(
-                        width: 250,
-                        height: 100,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8.0),
-                          child: ProductCard(),
-                        ),
-                      ),
-                    ],
+                      );
+                    }),
                   ),
                 ),
                 const SizedBox(
@@ -210,43 +210,19 @@ class _HomeState extends State<Home> {
                     ),
                   ],
                 ),
-                const Column(
+                Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      // width: 250, //Centers the card on un-comment
+                  children: List.generate(10, (index) {
+                    return SizedBox(
+                      // width: 250,
                       height: 100,
                       child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8.0),
-                        child: InvoiceCard(), //bug in this widget class
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        child: InvoiceCard(),
                       ),
-                    ),
-                    SizedBox(
-                      //width: 250,   //Centers the card on un-comment
-                      height: 100,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 0.0),
-                        child: InvoiceCard(), //bug in this widget class
-                      ),
-                    ),
-                    SizedBox(
-                      //width: 250,   //Centers the card on un-comment
-                      height: 100,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 0),
-                        child: InvoiceCard(), //bug in this widget class
-                      ),
-                    ),
-                    SizedBox(
-                      //width: 250,   //Centers the card on un-comment
-                      height: 100,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 0),
-                        child: InvoiceCard(), //bug in this widget class
-                      ),
-                    ),
-                  ],
+                    );
+                  }),
                 ),
               ],
             ),

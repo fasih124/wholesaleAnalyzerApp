@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
+  final int id;
+  final String name;
+  final String price;
+
   const ProductCard({
     super.key,
+    required this.id,
+    required this.name,
+    required this.price,
   });
 
   @override
@@ -11,17 +18,24 @@ class ProductCard extends StatelessWidget {
       elevation: 5,
       color: Colors.white,
       child: ListTile(
-        onTap: (){},
+        onTap: () {
+          print(id); // Access the id property directly
+        },
         leading: const Icon(
           Icons.inventory,
           size: 46,
         ),
-        title: const Text('Desert Eagle', style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
+        title: Text(
+          name, // Access the name property directly
+          style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         ),
+        subtitle: Text(
+          '\$$price', // Concatenate string with price directly
+          style: const TextStyle(fontSize: 16),
         ),
-        subtitle: const Text('\$ Free Trial',style: TextStyle(fontSize: 16),),
         //trailing: Icon(Icons.more_vert),
       ),
     );

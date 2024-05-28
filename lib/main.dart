@@ -30,9 +30,7 @@ class MyApp extends StatelessWidget {
         '/product': (context) => const Products(title: _title),
         '/home': (context) => const Home(title: _title),
         '/settings': (context) => const Settings(),
-        '/customers': (context) => const Customers(
-              title: _title,
-            ),
+        '/customers': (context) => const Customers(title: _title),
         '/customerDetails': (context) => const CustomerDetails(),
         '/addCustomer': (context) => const AddCustomer(),
       },
