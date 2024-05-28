@@ -43,7 +43,7 @@ class Orders extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
-                    'Orders invoice',
+                    'Orders',
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -69,10 +69,7 @@ class Orders extends StatelessWidget {
               ),
 
               const InvoiceCard(),
-              const InvoiceCard(),
-              const InvoiceCard(),
-              const InvoiceCard(),
-              const InvoiceCard(),
+
 
               //Placeholder()
             ],
