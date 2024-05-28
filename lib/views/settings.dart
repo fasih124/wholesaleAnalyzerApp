@@ -63,6 +63,7 @@ class _SettingsState extends State<Settings> {
           },
           icon: const Icon(
             Icons.arrow_back_ios,
+            color: Colors.blue,
           ),
         ),
         actions: [
