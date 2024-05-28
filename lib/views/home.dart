@@ -172,41 +172,37 @@ class _HomeState extends State<Home> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      //width: 250,   //Centers the card on un-comment
-                      height: 100,
+                      // width: 250, //Centers the card on un-comment
+                      height: 150,
                       child: Padding(
                         padding: EdgeInsets.symmetric(vertical: 8.0),
-                        child: InvoiceCard(),   //bug in this widget class
+                        child: InvoiceCard(), //bug in this widget class
                       ),
                     ),
-
                     SizedBox(
                       //width: 250,   //Centers the card on un-comment
                       height: 100,
                       child: Padding(
                         padding: EdgeInsets.symmetric(vertical: 0.0),
-                        child: InvoiceCard(),   //bug in this widget class
+                        child: InvoiceCard(), //bug in this widget class
                       ),
                     ),
-
                     SizedBox(
                       //width: 250,   //Centers the card on un-comment
                       height: 100,
                       child: Padding(
                         padding: EdgeInsets.symmetric(vertical: 0),
-                        child: InvoiceCard(),   //bug in this widget class
+                        child: InvoiceCard(), //bug in this widget class
                       ),
                     ),
-
                     SizedBox(
                       //width: 250,   //Centers the card on un-comment
                       height: 100,
                       child: Padding(
                         padding: EdgeInsets.symmetric(vertical: 0),
-                        child: InvoiceCard(),   //bug in this widget class
+                        child: InvoiceCard(), //bug in this widget class
                       ),
                     ),
-
                   ],
                 ),
               ],
@@ -218,5 +214,3 @@ class _HomeState extends State<Home> {
     );
   }
 }
-
-
