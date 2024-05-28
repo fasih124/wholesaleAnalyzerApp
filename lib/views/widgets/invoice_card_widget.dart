@@ -7,16 +7,19 @@ class InvoiceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Card(
+    return Card(
       elevation: 3,
       color: Colors.white,
       child: ListTile(
-        leading: Icon(
+        onTap: (){
+          Navigator.pushNamed(context, '/invoiceDetails');
+        },
+        leading: const Icon(
           Icons.receipt,
           color: Colors.orange,
           size: 46,
         ),
-        title: Flexible(
+        title: const Flexible(
           child: Text(
             'Monolithic Suppressor', //the text length overflows the card size in long sized strings
             style: TextStyle(
@@ -25,7 +28,7 @@ class InvoiceCard extends StatelessWidget {
             ),
           ),
         ),
-        subtitle: Row(
+        subtitle: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
