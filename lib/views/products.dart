@@ -207,7 +207,9 @@ class _ProductsState extends State<Products> {
         showSelectedLabels: true,
 
         currentIndex: _selectedItemPosition,
-        onTap: (index) => setState(() => _selectedItemPosition = index),
+        onTap: (index,){
+          setState(() => _selectedItemPosition = index);
+        },
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

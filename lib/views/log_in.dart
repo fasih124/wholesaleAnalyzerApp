@@ -24,14 +24,7 @@ class LogIn extends StatelessWidget {
         ),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
-        //automaticallyImplyLeading: false,
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: Colors.white,
-          ),
-        ),
+        automaticallyImplyLeading: false,
       ),
       body: const MyStatefulWidget(),
     );
