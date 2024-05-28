@@ -61,7 +61,7 @@ class _OrdersState extends State<Orders> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
-                    'Orders invoice',
+                    'Orders',
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -120,13 +120,6 @@ class _OrdersState extends State<Orders> {
                           CircularProgressIndicator()); // Show loading indicator
                 },
               ),
-// const InvoiceCard(),
-// const InvoiceCard(),
-// const InvoiceCard(),
-// const InvoiceCard(),
-// const InvoiceCard(),
-
-//Placeholder()
             ],
           ),
         ),
