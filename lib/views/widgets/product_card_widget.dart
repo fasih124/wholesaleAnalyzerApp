@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../utility/product_info.dart';
 
 class ProductCard extends StatelessWidget {
   final int id;

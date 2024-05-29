@@ -1,18 +1,5 @@
 import 'package:flutter/material.dart';
-
-class CustomerInfo {
-  final int id;
-  final String name;
-  final String phone;
-  final String address;
-
-  CustomerInfo({
-    required this.id,
-    required this.name,
-    required this.phone,
-    required this.address,
-  });
-}
+import '../../utility/customer_info.dart';
 
 class CustomerCard extends StatelessWidget {
   final int id;
