@@ -34,8 +34,8 @@ class MyApp extends StatelessWidget {
       //theme: ThemeData.dark(useMaterial3: true),
       title: _title,
       home:
-      Home(
-        title: _title,
+      Splash(
+        // title: _title,
       ),
       routes: {
         '/signup': (context) => const SignUp(title: _title,),
