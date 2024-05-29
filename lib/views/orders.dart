@@ -68,7 +68,9 @@ class _OrdersState extends State<Orders> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/addInvoice');
+                    },
                     style: const ButtonStyle(
                       elevation: MaterialStatePropertyAll(2),
                       backgroundColor: MaterialStatePropertyAll(Colors.white),

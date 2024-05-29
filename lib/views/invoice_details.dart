@@ -403,7 +403,7 @@ class _InvoiceDetailsState extends State<InvoiceDetails> {
                       MaterialStatePropertyAll(Colors.blueAccent),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/updateProduct');
+                      Navigator.pushNamed(context, '/updateInvoice');
                     },
                     child: const Text(
                       'Update Invoice',

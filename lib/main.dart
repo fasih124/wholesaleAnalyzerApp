@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:wholesale_analyzer_project/views/add_customer.dart';
+import 'package:wholesale_analyzer_project/views/add_invoice.dart';
 import 'package:wholesale_analyzer_project/views/add_product.dart';
 import 'package:wholesale_analyzer_project/views/invoice_details.dart';
 import 'package:wholesale_analyzer_project/views/orders.dart';
 import 'package:wholesale_analyzer_project/views/product_details.dart';
+import 'package:wholesale_analyzer_project/views/updateInvoice.dart';
 import 'package:wholesale_analyzer_project/views/update_customer.dart';
 import 'package:wholesale_analyzer_project/views/customer_details.dart';
 import 'package:wholesale_analyzer_project/views/customers.dart';
@@ -51,6 +53,8 @@ class MyApp extends StatelessWidget {
         '/updateProduct': (context) => const UpdateProduct(),
         '/orders': (context) => const Orders(title: _title,),
         '/invoiceDetails': (context) => const InvoiceDetails(),
+        '/addInvoice': (context) => const AddInvoice(),
+        '/updateInvoice': (context) => const UpdateInvoice(),
       },
     );
   }
