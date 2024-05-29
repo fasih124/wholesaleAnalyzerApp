@@ -3,7 +3,7 @@ import "package:http/http.dart" as http;
 import '../models/invoice_model.dart';
 
 class InvoiceController {
-  static const String _baseUrl = 'http://localhost:3300/invoices';
+  static const String _baseUrl = 'http://10.13.27.10:3300/invoices';
 
   Future<List<Invoice>> getInvoice() async {
     final response = await http.get(Uri.parse(_baseUrl));

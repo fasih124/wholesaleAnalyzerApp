@@ -46,6 +46,7 @@ class _ProductsState extends State<Products> {
     return Scaffold(
       //backgroundColor: Colors.white,
       appBar: AppBar(
+
         backgroundColor: Colors.blueAccent,
         automaticallyImplyLeading: false,
         title: Text(

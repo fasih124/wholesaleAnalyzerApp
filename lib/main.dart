@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
       //theme: ThemeData.dark(useMaterial3: true),
       title: _title,
       // home: const Splash(), //,const Products(title: _title,),
-      home: const Home(title: _title),
+      home: const Splash(),
       // home: const Customers(title: _title),
       // home: const Center(child: const Orders(title: _title)),
       routes: {

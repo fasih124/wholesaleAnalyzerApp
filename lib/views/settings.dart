@@ -92,7 +92,8 @@ class _SettingsState extends State<Settings> {
                 child: const CircleAvatar(
                   backgroundColor: Colors.blueAccent,
                   maxRadius: 60,
-                  backgroundImage: AssetImage('assets/hitler.jpg'),
+                  child: Icon(Icons.person,size: 100,color: Colors.white,),
+                  // backgroundImage: ,// AssetImage('assets/hitler.jpg'),
                 ),
               ),
             ),

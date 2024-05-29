@@ -45,9 +45,12 @@ class CustomerCard extends StatelessWidget {
           ),
         ),
 
-        subtitle: Text(
-          address,
-          style: TextStyle(fontSize: 12),
+        subtitle: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Text(
+            address,
+            style: TextStyle(fontSize: 15),
+          ),
         ),
         //trailing: Icon(Icons.more_vert),
       ),

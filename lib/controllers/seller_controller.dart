@@ -4,7 +4,7 @@ import '../models/seller_model.dart';
 import '../utility/shared_preferences.dart';
 
 class SellerController {
-  static const String _baseUrl = 'http://localhost:3300/sellers';
+  static const String _baseUrl = 'http://10.13.27.10:3300/sellers';
   static String _sellerID = 1.toString();
   Seller? _currentSeller;
 
@@ -14,7 +14,7 @@ class SellerController {
     try {
       final response = await http.post(
         Uri.parse(
-            'http://localhost:3300/sellers/login'), // Replace with your actual URL
+            'http://10.13.27.10:3300/sellers/login'), // Replace with your actual URL
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'email': email, 'password': password}),
       );
@@ -51,8 +51,12 @@ class SellerController {
 
   Future<bool> signup(String email, String password, String name) async {
     try {
+      // final headers = {'Content-Type': 'application/x-www-form-urlencoded'};
+
+
       final response = await http.post(
-        Uri.parse('http://localhost:3300/sellers/signup'),
+        // Uri.parse('http://localhost:3300/sellers/signup'),
+        Uri.parse('http://10.13.27.10:3300/sellers/signup'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'email': email,
@@ -60,6 +64,9 @@ class SellerController {
           'seller_name': name,
         }),
       );
+
+
+
       if (response.statusCode == 200) {
         return true;
       } else {

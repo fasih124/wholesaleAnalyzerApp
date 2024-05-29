@@ -5,7 +5,7 @@ import '../models/customer_model.dart';
 
 class CustomerController {
   String sellerID = SellerController.getsellerID();
-  static const String _baseUrl = 'http://localhost:3300/customers';
+  static const String _baseUrl = 'http://10.13.27.10:3300/customers';
 
   Future<List<Customer>> getCustomer() async {
     final response = await http.get(Uri.parse(_baseUrl));

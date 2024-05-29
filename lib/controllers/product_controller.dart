@@ -3,7 +3,8 @@ import "package:http/http.dart" as http;
 import '../models/product_model.dart';
 
 class ProductController {
-  static const String _baseUrl = 'http://localhost:3300/products';
+  // static const String _baseUrl = 'http://localhost:3300/products';
+  static const String _baseUrl = 'http://10.13.27.10:3300/products';
 
   Future<List<Product>> getProduct() async {
     final response = await http.get(Uri.parse(_baseUrl));

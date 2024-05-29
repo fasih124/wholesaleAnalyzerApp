@@ -1,3 +1,6 @@
+import 'dart:ffi';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wholesale_analyzer_project/views/widgets/customer_card_widget.dart';
 import 'package:wholesale_analyzer_project/views/widgets/invoice_card_widget.dart';
@@ -43,7 +46,7 @@ class _CustomerDetailsState extends State<CustomerDetails> {
       final id = customerDetails.id;
       final name = customerDetails.name;
       final phone = customerDetails.phone;
-      _fetchInvoiceData(id);
+       _fetchInvoiceData(id);
       final address = customerDetails.address;
       return Scaffold(
 //backgroundColor: Colors.white,
@@ -91,65 +94,71 @@ class _CustomerDetailsState extends State<CustomerDetails> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
 //Placeholder(),
-                Card(
-                  elevation: 5,
-                  color: Colors.white,
-                  child: ListTile(
-                    onTap: () {},
-                    leading: const Icon(
-                      Icons.person_outline,
-                      color: Colors.deepPurpleAccent,
-                      size: 70,
-                    ),
-                    title: Column(
-//Don't remove comments from this section. Required for gold-plating
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-// Icon(Icons.person_outline),
-// SizedBox(
-//   width: 12,
-// ),
-                            Text(
-                              name,
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                SizedBox(
+                  width: double.infinity,
+                  // height: 150,
+                  child: Card(
+                    elevation: 5,
+                    color: Colors.white,
+                    child: ListTile(
+                      onTap: () {},
+                      leading: const Icon(
+                        Icons.person_outline,
+                        color: Colors.deepPurpleAccent,
+                        size: 70,
+                      ),
+                      title: Column(
+                                      //Don't remove comments from this section. Required for gold-plating
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                                      // Icon(Icons.person_outline),
+                                      // SizedBox(
+                                      //   width: 12,
+                                      // ),
+                              Text(
+                                name,
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-// Icon(Icons.phone_outlined),
-// SizedBox(
-//   width: 12,
-// ),
-                            Text(
-                              phone,
-                              style: TextStyle(
-                                fontSize: 16,
-//fontWeight: FontWeight.bold,
+                            ],
+                          ),
+                          Row(
+                            children: [
+                                      // Icon(Icons.phone_outlined),
+                                      // SizedBox(
+                                      //   width: 12,
+                                      // ),
+                              Text(
+                                phone,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                      //fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-// Icon(Icons.person_outline),
-// SizedBox(width: 12,),
-                            Text(
-                              address,
-                              style: TextStyle(
-                                fontSize: 16,
-//fontWeight: FontWeight.bold,
+                            ],
+                          ),
+                          Row(
+                            children: [
+                                      // Icon(Icons.person_outline),
+                                      // SizedBox(width: 12,),
+                              Expanded(
+                                child: Text(
+                                  address,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                        //fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -203,17 +212,17 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                       final products = snapshot.data!;
                       return Column(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children:
+                        children:(invoices[0].data!.length>=0)?
                             List.generate(invoices[0].data!.length, (index) {
                           return SizedBox(
 // width: 250,
                             height: 100,
                             child: Padding(
-                              padding: EdgeInsets.symmetric(vertical: 8.0),
+                              padding: const EdgeInsets.symmetric(vertical: 8.0),
                               child: invoices.isEmpty ||
                                       invoices[0].data!.length ==
                                           0 // Use invoices directly from snapshot.data
-                                  ? Text("No Invoice Yet!!!")
+                                  ? const Text("No Invoice Yet!!!")
                                   : InvoiceCard(
                                       id: invoices[0]?.data?[index]?.invoiceId
                                           as int,
@@ -222,13 +231,14 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                                           ?.netAmount as String),
                             ),
                           );
-                        }),
+                        }):
+                        [],
                       );
                     } else if (snapshot.hasError) {
-                      return Text(
+                      return const Text(
                           'Error: Unable to get Product'); // Handle errors
                     }
-                    return Center(
+                    return const Center(
                         child:
                             CircularProgressIndicator()); // Show loading indicator
                   },
@@ -279,8 +289,8 @@ class _CustomerDetailsState extends State<CustomerDetails> {
               )
             ],
           ),
-          body: Center(
-            child: const Text('Error: No customer details provided.'),
+          body: const Center(
+            child: Text('Error: No customer details provided.'),
           ));
     }
   }
