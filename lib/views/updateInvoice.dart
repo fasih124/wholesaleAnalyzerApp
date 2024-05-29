@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 
-class AddInvoice extends StatefulWidget {
-  const AddInvoice({super.key});
+class UpdateInvoice extends StatefulWidget {
+  const UpdateInvoice({super.key});
 
   @override
-  State<AddInvoice> createState() => _AddInvoiceState();
+  State<UpdateInvoice> createState() => _UpdateInvoiceState();
 }
 
-class _AddInvoiceState extends State<AddInvoice> {
-
-  TextEditingController addQuantity = TextEditingController();
-  TextEditingController addPricePerItem = TextEditingController();
-
+class _UpdateInvoiceState extends State<UpdateInvoice> {
+  TextEditingController updateQuantity = TextEditingController();
+  TextEditingController updatePricePerItem = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +24,7 @@ class _AddInvoiceState extends State<AddInvoice> {
           children: [
             Center(
               child: Text(
-                'Add Invoice',
+                'Update Invoice',
                 style: TextStyle(
                   color: Colors.blueAccent,
                   fontSize: 26,
@@ -158,7 +156,7 @@ class _AddInvoiceState extends State<AddInvoice> {
                           width: 100,
                           child: TextField(
                             textAlign: TextAlign.left,
-                            controller: addQuantity,
+                            controller: updateQuantity,
                             decoration: const InputDecoration(
                               contentPadding: EdgeInsets.fromLTRB(
                                   20, 5, 20, 5), //controls the field size
@@ -210,7 +208,7 @@ class _AddInvoiceState extends State<AddInvoice> {
                           width: 100,
                           child: TextField(
                             textAlign: TextAlign.left,
-                            controller: addPricePerItem,
+                            controller: updatePricePerItem,
                             decoration: const InputDecoration(
                               contentPadding: EdgeInsets.fromLTRB(
                                   20, 5, 20, 5), //controls the field size
@@ -247,13 +245,15 @@ class _AddInvoiceState extends State<AddInvoice> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 35.0),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+
+                          },
                           style: const ButtonStyle(
                               elevation: MaterialStatePropertyAll(3),
                               backgroundColor:
                               MaterialStatePropertyAll(Colors.blueAccent)),
                           child: const Text(
-                            'Add Invoice',
+                            'Update Invoice',
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
