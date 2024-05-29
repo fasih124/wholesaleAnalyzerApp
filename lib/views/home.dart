@@ -1,9 +1,14 @@
-//dependency: flutter_snake_navigationbar: ^0.6.1
 import 'package:flutter/material.dart';
 import 'package:wholesale_analyzer_project/views/widgets/customer_card_widget.dart';
 import 'package:wholesale_analyzer_project/views/widgets/invoice_card_widget.dart';
 import 'package:wholesale_analyzer_project/views/widgets/product_card_widget.dart';
 import 'package:wholesale_analyzer_project/views/widgets/snake_navbar_widget.dart';
+import '../controllers/product_controller.dart';
+import '../controllers/invoice_controller.dart';
+import '../controllers/customer_controller.dart';
+import '../models/product_model.dart';
+import '../models/invoice_model.dart';
+import '../models/customer_model.dart';
 
 class Home extends StatefulWidget {
   final String _title;
@@ -17,6 +22,51 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final productController = ProductController();
+  final customerController = CustomerController();
+  final invoiceController = InvoiceController();
+
+  late List<Product> products;
+  late List<Customer> customers;
+  late List<Invoice> invoices;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchCustomerData();
+    _fetchProductData(); // Call the function to fetch data on initialization
+    _fetchInvoiceData(); // Call the function to fetch data on initialization
+  }
+
+  Future<void> _fetchProductData() async {
+    try {
+      products = await productController.getProduct();
+
+      setState(() {}); // Notify the widget to rebuild with updated data
+    } catch (error) {
+      print(error); // Handle errors appropriately (e.g., show error message)
+    }
+  }
+
+  Future<void> _fetchInvoiceData() async {
+    try {
+      invoices = await invoiceController.getInvoice();
+
+      setState(() {}); // Notify the widget to rebuild with updated data
+    } catch (error) {
+      print(error); // Handle errors appropriately (e.g., show error message)
+    }
+  }
+
+  Future<void> _fetchCustomerData() async {
+    try {
+      customers = await customerController.getCustomer();
+      setState(() {});
+    } catch (error) {
+      print(error);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,6 +103,7 @@ class _HomeState extends State<Home> {
           child: Expanded(
             child: Column(
               children: [
+                //================= Customer ================================================================================================
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -64,7 +115,7 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     TextButton(
-                      onPressed: (){
+                      onPressed: () {
                         Navigator.pushNamed(context, '/customers');
                       },
                       child: const Text(
@@ -79,36 +130,52 @@ class _HomeState extends State<Home> {
                 const SizedBox(
                   height: 18,
                 ),
-                // Placeholder(),
-                const SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: 250,
-                        height: 100,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8.0),
-                          child: CustomerCard(),
+                FutureBuilder<List<Customer>>(
+                  future: customerController
+                      .getCustomer(), // Replace with your actual function
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      final customers = snapshot.data!;
+                      return SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children:
+                              List.generate(customers[0].data!.length, (index) {
+                            return SizedBox(
+                              width: 250,
+                              height: 100,
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                                child: CustomerCard(
+                                  id: customers[0]?.data?[index]?.customerId
+                                      as int, // Access data directly from the list
+                                  name: customers[0]?.data?[index]?.name
+                                      as String,
+                                  address: customers[0]?.data?[index]?.address
+                                      as String,
+                                  phone: customers[0]?.data?[index]?.phoneNumber
+                                      as String,
+                                ),
+                              ),
+                            );
+                          }),
                         ),
-                      ),
-                      SizedBox(
-                        width: 250,
-                        height: 100,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8.0),
-                          child: CustomerCard(),
-                        ),
-                      ),
-                    ],
-                  ),
+                      );
+                    } else if (snapshot.hasError) {
+                      return Text(
+                          'Error: Unable to get Product'); // Handle errors
+                    }
+                    return Center(
+                        child:
+                            CircularProgressIndicator()); // Show loading indicator
+                  },
                 ),
-
-                const SizedBox(
+                SizedBox(
                   height: 28,
                 ),
-                 Row(
+                //================= product ================================================================================================
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
@@ -119,7 +186,7 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     TextButton(
-                      onPressed: (){
+                      onPressed: () {
                         Navigator.pushNamed(context, '/product');
                       },
                       child: const Text(
@@ -131,34 +198,52 @@ class _HomeState extends State<Home> {
                     ),
                   ],
                 ),
-
-                const SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: 250,
-                        height: 100,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8.0),
-                          child: ProductCard(),
+                FutureBuilder<List<Product>>(
+                  future: productController.getProduct(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      final products = snapshot.data!;
+                      return SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children:
+                              List.generate(products[0].data!.length, (index) {
+                            return SizedBox(
+                              width: 250,
+                              height: 100,
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                                child: ProductCard(
+                                  id: products[0].data?[index].productId ?? -1,
+                                  name: products[0]
+                                          .data?[index]
+                                          .productName
+                                          ?.toString() ??
+                                      '',
+                                  price:
+                                      products[0].data?[index].productPrice ??
+                                          'N/A',
+                                ),
+                              ),
+                            );
+                          }),
                         ),
-                      ),
-                      SizedBox(
-                        width: 250,
-                        height: 100,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8.0),
-                          child: ProductCard(),
-                        ),
-                      ),
-                    ],
-                  ),
+                      );
+                    } else if (snapshot.hasError) {
+                      return Text(
+                          'Error: Unable to get Product'); // Handle errors
+                    }
+                    return Center(
+                        child:
+                            CircularProgressIndicator()); // Show loading indicator
+                  },
                 ),
+
                 const SizedBox(
                   height: 28,
                 ),
+                //================= Invoices ================================================================================================
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -170,67 +255,75 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     TextButton(
-                      onPressed: (){
+                      onPressed: () {
                         //Navigator.pushNamed(context, '/invoice');
                       },
                       child: TextButton(
-                        onPressed: (){
-                        Navigator.pushNamed(context, '/orders');
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/orders');
                         },
                         child: const Text(
-                        'Show All',
-                        style: TextStyle(
-                          color: Color.fromRGBO(128, 128, 128, 0.9),
+                          'Show All',
+                          style: TextStyle(
+                            color: Color.fromRGBO(128, 128, 128, 0.9),
+                          ),
                         ),
                       ),
                     ),
-                    ),
                   ],
                 ),
-                const Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      // width: 250, //Centers the card on un-comment
-                      height: 100,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8.0),
-                        child: InvoiceCard(), //bug in this widget class
-                      ),
-                    ),
-                    SizedBox(
-                      //width: 250,   //Centers the card on un-comment
-                      height: 100,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 0.0),
-                        child: InvoiceCard(), //bug in this widget class
-                      ),
-                    ),
-                    SizedBox(
-                      //width: 250,   //Centers the card on un-comment
-                      height: 100,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 0),
-                        child: InvoiceCard(), //bug in this widget class
-                      ),
-                    ),
-                    SizedBox(
-                      //width: 250,   //Centers the card on un-comment
-                      height: 100,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 0),
-                        child: InvoiceCard(), //bug in this widget class
-                      ),
-                    ),
-                  ],
+                FutureBuilder<List<Invoice>>(
+                  future: invoiceController
+                      .getInvoice(), // Replace with your actual function
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      // No changes needed here, existing code will use `snapshot.data!`
+                      return invoices
+                              .isEmpty // Use invoices directly from snapshot.data
+                          ? Center(
+                              child:
+                                  CircularProgressIndicator()) // Show loading indicator
+                          : Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: List.generate(invoices[0].data!.length,
+                                  (index) {
+                                return SizedBox(
+                                  // width: 250,
+                                  height: 100,
+                                  child: Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(vertical: 8.0),
+                                    child: invoices
+                                            .isEmpty // Use invoices directly from snapshot.data
+                                        ? Text("No Invoice Yet!!!")
+                                        : InvoiceCard(
+                                            id: invoices[0]
+                                                ?.data?[index]
+                                                ?.invoiceId as int,
+                                            amount: invoices[0]
+                                                ?.data?[index]
+                                                ?.netAmount as String),
+                                  ),
+                                );
+                              }),
+                            );
+                    } else if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}'); // Handle errors
+                    }
+                    return Center(
+                        child:
+                            CircularProgressIndicator()); // Show loading indicator
+                  },
                 ),
               ],
             ),
           ),
         ),
       ),
-      bottomNavigationBar: const Snake(),
+      bottomNavigationBar: const Snake(
+        position: 0,
+      ),
     );
   }
 }

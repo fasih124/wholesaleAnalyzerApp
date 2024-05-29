@@ -8,6 +8,8 @@ To make that invisible, keep the screen bg-color white. (Big Brain Time)
 
 import 'package:flutter/material.dart';
 
+import '../utility/shared_preferences.dart';
+
 class Settings extends StatefulWidget {
   const Settings({super.key});
 
@@ -47,7 +49,6 @@ class _SettingsState extends State<Settings> {
             SizedBox(
               height: 10,
             ),
-
           ],
         ),
         leading: IconButton(
@@ -318,7 +319,11 @@ class _SettingsState extends State<Settings> {
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 35.0),
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/login');
+                                SharedPrefsUtil.saveSellerId(0 as String);
+                                SharedPrefsUtil.saveLoginStatus(false);
+                              },
                               style: const ButtonStyle(
                                   elevation: MaterialStatePropertyAll(3),
                                   backgroundColor:
@@ -332,15 +337,14 @@ class _SettingsState extends State<Settings> {
                           const SizedBox(
                             height: 20,
                           ),
-
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 35.0),
                             child: ElevatedButton(
                               onPressed: () {},
                               style: const ButtonStyle(
                                   elevation: MaterialStatePropertyAll(3),
-                                  backgroundColor:
-                                  MaterialStatePropertyAll(Colors.blueAccent)),
+                                  backgroundColor: MaterialStatePropertyAll(
+                                      Colors.blueAccent)),
                               child: const Text(
                                 'Update',
                                 style: TextStyle(color: Colors.white),

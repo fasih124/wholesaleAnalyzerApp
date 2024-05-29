@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
+  final int id;
+  final String name;
+  final String price;
+
   const ProductCard({
     super.key,
+    required this.id,
+    required this.name,
+    required this.price,
   });
 
   @override
@@ -11,7 +18,10 @@ class ProductCard extends StatelessWidget {
       elevation: 3,
       color: Colors.white,
       child: ListTile(
-        onTap: (){
+        onTap: () {
+          print("----------"); // Access the id property directly
+          print(id); // Access the id property directly
+          print("----------"); // Access the id property directly
           Navigator.pushNamed(context, '/productDetails');
         },
         leading: const Icon(
@@ -19,33 +29,18 @@ class ProductCard extends StatelessWidget {
           Icons.inventory,
           size: 46,
         ),
-        title: const Flexible(
+        title: Flexible(
           child: Text(
-            'Desert Eagle', //the text length overflows the card size in long sized strings
-            style: TextStyle(
-              fontSize: 20,
+            name, // Access the name property directly
+            style: const TextStyle(
+              fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
         ),
-        subtitle: const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Gun',
-              style: TextStyle(
-                fontSize: 16,
-                // fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              '\$ 10',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
+        subtitle: Text(
+          '\$$price', // Concatenate string with price directly
+          style: const TextStyle(fontSize: 12),
         ),
         //trailing: Icon(Icons.more_vert),
       ),

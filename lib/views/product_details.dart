@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:wholesale_analyzer_project/views/widgets/invoice_card_widget.dart';
 
 class ProductDetails extends StatelessWidget {
-  const ProductDetails({super.key});
+  final int id;
+  const ProductDetails({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -161,7 +162,6 @@ class ProductDetails extends StatelessWidget {
                   ),
                 ],
               ),
-
             ],
           ),
         ),
