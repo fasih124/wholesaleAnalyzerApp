@@ -4,6 +4,7 @@ import 'package:wholesale_analyzer_project/views/widgets/invoice_card_widget.dar
 
 import '../controllers/invoice_controller.dart';
 import '../models/invoice_model.dart';
+import '../utility/customer_info.dart';
 import 'widgets/snake_navbar_widget.dart';
 
 class CustomerDetails extends StatefulWidget {
@@ -173,7 +174,14 @@ class _CustomerDetailsState extends State<CustomerDetails> {
                             MaterialStatePropertyAll(Colors.blueAccent),
                       ),
                       onPressed: () {
-                        Navigator.pushNamed(context, '/updateCustomer');
+                        final customerDetails = CustomerInfo(
+                          id: id,
+                          name: name,
+                          phone: phone,
+                          address: address,
+                        );
+                        Navigator.pushNamed(context, '/updateCustomer',
+                            arguments: customerDetails);
                       },
                       child: const Text(
                         'Update Customer',

@@ -15,7 +15,7 @@ class InvoiceCard extends StatelessWidget {
       elevation: 3,
       color: Colors.white,
       child: ListTile(
-        onTap: (){
+        onTap: () {
           Navigator.pushNamed(context, '/invoiceDetails');
         },
         leading: const Icon(
@@ -23,7 +23,7 @@ class InvoiceCard extends StatelessWidget {
           color: Colors.orange,
           size: 46,
         ),
-        title: const Flexible(
+        title: Flexible(
           child: Text(
             'Invoice # ${this.id}', //the text length overflows the card size in long sized strings
             style: TextStyle(
@@ -32,7 +32,7 @@ class InvoiceCard extends StatelessWidget {
             ),
           ),
         ),
-        subtitle: const Row(
+        subtitle: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(

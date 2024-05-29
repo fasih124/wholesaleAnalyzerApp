@@ -5,8 +5,10 @@ import '../utility/shared_preferences.dart';
 
 class SellerController {
   static const String _baseUrl = 'http://localhost:3300/sellers';
-  late String _sellerID;
+  static String _sellerID = 1.toString();
   Seller? _currentSeller;
+
+  static String getsellerID() => _sellerID;
 
   Future<bool> login(String email, String password) async {
     try {
