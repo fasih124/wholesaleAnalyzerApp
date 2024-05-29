@@ -22,6 +22,11 @@ class Product {
     }
     return data;
   }
+
+  @override
+  String toString() {
+    return 'Product{status: $status, data: $data}';
+  }
 }
 
 class Data {
@@ -70,5 +75,10 @@ class Data {
     data['inventory_limit'] = this.inventoryLimit;
     data['seller_id'] = this.sellerId;
     return data;
+  }
+
+  @override
+  String toString() {
+    return 'Data{productId: $productId, productName: $productName, productPrice: $productPrice, description: $description, category: $category, productImagePath: $productImagePath, currentInventory: $currentInventory, inventoryLimit: $inventoryLimit, sellerId: $sellerId}';
   }
 }

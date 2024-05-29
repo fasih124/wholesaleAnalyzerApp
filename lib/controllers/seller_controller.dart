@@ -4,9 +4,11 @@ import '../models/seller_model.dart';
 import '../utility/shared_preferences.dart';
 
 class SellerController {
-  static const String _baseUrl = 'http://localhost:3000/sellers';
-  late String _sellerID;
+  static const String _baseUrl = 'http://localhost:3300/sellers';
+  static String _sellerID = 1.toString();
   Seller? _currentSeller;
+
+  static String getsellerID() => _sellerID;
 
   Future<bool> login(String email, String password) async {
     try {

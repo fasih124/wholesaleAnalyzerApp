@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../controllers/customer_controller.dart';
+import '../utility/customer_info.dart';
+
 class UpdateCustomer extends StatefulWidget {
   const UpdateCustomer({super.key});
 
@@ -8,14 +11,17 @@ class UpdateCustomer extends StatefulWidget {
 }
 
 class _UpdateCustomerState extends State<UpdateCustomer> {
-  TextEditingController updateFullname = TextEditingController();
-  TextEditingController updateEmail = TextEditingController();
-  TextEditingController updatePhone = TextEditingController();
-  TextEditingController updateAddress = TextEditingController();
-
-
   @override
   Widget build(BuildContext context) {
+    final customerDetails =
+        ModalRoute.of(context)?.settings.arguments as CustomerInfo?;
+    TextEditingController updateFullname =
+        TextEditingController(text: customerDetails?.name);
+    // TextEditingController updateEmail = TextEditingController(text: );
+    TextEditingController updatePhone =
+        TextEditingController(text: customerDetails?.phone);
+    TextEditingController updateAddress =
+        TextEditingController(text: customerDetails?.address);
     return Scaffold(
       appBar: AppBar(
         //backgroundColor: const Color.fromRGBO(206, 206, 206, 0.5),
@@ -35,7 +41,6 @@ class _UpdateCustomerState extends State<UpdateCustomer> {
                 ),
               ),
             ),
-
           ],
         ),
         leading: IconButton(
@@ -49,7 +54,9 @@ class _UpdateCustomerState extends State<UpdateCustomer> {
         ),
         actions: const [
           //sets the title to center
-        SizedBox(width: 40,)
+          SizedBox(
+            width: 40,
+          )
         ],
       ),
       body: SingleChildScrollView(
@@ -61,7 +68,8 @@ class _UpdateCustomerState extends State<UpdateCustomer> {
             const SizedBox(
               height: 10,
             ),
-            const Icon(Icons.person_outline,
+            const Icon(
+              Icons.person_outline,
               color: Colors.green,
               size: 90,
             ),
@@ -91,12 +99,14 @@ class _UpdateCustomerState extends State<UpdateCustomer> {
                       ),
                     ),
                     TextField(
+                      // initialValue: "Enter your name",
                       textAlign: TextAlign.left,
                       controller: updateFullname,
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(
                             20, 5, 20, 5), //controls the field size
-                        hintText: 'Hitler Bin Ladin', //fetch from DB
+                        // hintText: 'Hitler Bin Ladin', //fetch from DB
+
                         hintStyle: TextStyle(
                           fontSize: 14,
                           // fontWeight: FontWeight.bold,
@@ -110,7 +120,7 @@ class _UpdateCustomerState extends State<UpdateCustomer> {
                               color: Colors.transparent,
                             ),
                             borderRadius:
-                            BorderRadius.all(Radius.circular(32))),
+                                BorderRadius.all(Radius.circular(32))),
 
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -121,47 +131,46 @@ class _UpdateCustomerState extends State<UpdateCustomer> {
                         //labelText: 'User Name',
                       ),
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const Text(
-                      'Email',
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    ),
-                    TextField(
-                      textAlign: TextAlign.left,
-                      controller: updateEmail,
-                      decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(
-                            20, 5, 20, 5), //controls the field size
-                        hintText: 'hitler@gmail.com', //fetch from DB
-                        hintStyle: TextStyle(
-                          fontSize: 14,
-                         // fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                        filled: true,
-                        fillColor: Color.fromRGBO(206, 206, 206, 0.5),
-
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                            ),
-                            borderRadius:
-                            BorderRadius.all(Radius.circular(32))),
-
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                          ),
-                          borderRadius: BorderRadius.all(Radius.circular(32)),
-                        ),
-                        //labelText: 'User Name',
-                      ),
-                    ),
-
+                    // const SizedBox(
+                    //   height: 20,
+                    // ),
+                    // const Text(
+                    //   'Email',
+                    //   style: TextStyle(
+                    //     fontSize: 20,
+                    //   ),
+                    // ),
+                    // TextField(
+                    //   textAlign: TextAlign.left,
+                    //   controller: updateEmail,
+                    //   decoration: const InputDecoration(
+                    //     contentPadding: EdgeInsets.fromLTRB(
+                    //         20, 5, 20, 5), //controls the field size
+                    //     hintText: 'hitler@gmail.com', //fetch from DB
+                    //     hintStyle: TextStyle(
+                    //       fontSize: 14,
+                    //       // fontWeight: FontWeight.bold,
+                    //       color: Colors.black,
+                    //     ),
+                    //     filled: true,
+                    //     fillColor: Color.fromRGBO(206, 206, 206, 0.5),
+                    //
+                    //     enabledBorder: OutlineInputBorder(
+                    //         borderSide: BorderSide(
+                    //           color: Colors.transparent,
+                    //         ),
+                    //         borderRadius:
+                    //             BorderRadius.all(Radius.circular(32))),
+                    //
+                    //     focusedBorder: OutlineInputBorder(
+                    //       borderSide: BorderSide(
+                    //         color: Colors.transparent,
+                    //       ),
+                    //       borderRadius: BorderRadius.all(Radius.circular(32)),
+                    //     ),
+                    //     //labelText: 'User Name',
+                    //   ),
+                    // ),
                     const SizedBox(
                       height: 20,
                     ),
@@ -177,7 +186,7 @@ class _UpdateCustomerState extends State<UpdateCustomer> {
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(
                             20, 5, 20, 5), //controls the field size
-                        hintText: '1234325345', //fetch from DB
+                        // hintText: '1234325345', //fetch from DB
                         hintStyle: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w300,
@@ -191,7 +200,7 @@ class _UpdateCustomerState extends State<UpdateCustomer> {
                               color: Colors.transparent,
                             ),
                             borderRadius:
-                            BorderRadius.all(Radius.circular(32))),
+                                BorderRadius.all(Radius.circular(32))),
 
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -217,7 +226,7 @@ class _UpdateCustomerState extends State<UpdateCustomer> {
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(
                             20, 5, 20, 5), //controls the field size
-                        hintText: 'Germany', //fetch from DB
+                        // hintText: 'Germany', //fetch from DB
                         hintStyle: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w300,
@@ -231,7 +240,7 @@ class _UpdateCustomerState extends State<UpdateCustomer> {
                               color: Colors.transparent,
                             ),
                             borderRadius:
-                            BorderRadius.all(Radius.circular(32))),
+                                BorderRadius.all(Radius.circular(32))),
 
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -246,11 +255,38 @@ class _UpdateCustomerState extends State<UpdateCustomer> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 35.0),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            CustomerController controller =
+                                CustomerController();
+                            controller
+                                .updateCustomer(
+                                    customerDetails!.id,
+                                    updateFullname.text,
+                                    updatePhone.text,
+                                    updateAddress.text)
+                                .then((success) {
+                              if (success) {
+                                // Navigate to the seller dashboard or another page upon successful login
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                        content: Text('update successful')));
+                                Navigator.pushReplacementNamed(context,
+                                    '/customers'); // Example navigation
+                              } else {
+                                // Handle login failure
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text('Login failed')));
+                              }
+                            });
+                            print(updateFullname.text);
+                            print(updateAddress.text);
+                            print(updatePhone.text);
+                            print(customerDetails!.id.toString());
+                          },
                           style: const ButtonStyle(
                               elevation: MaterialStatePropertyAll(3),
                               backgroundColor:
-                              MaterialStatePropertyAll(Colors.blueAccent)),
+                                  MaterialStatePropertyAll(Colors.blueAccent)),
                           child: const Text(
                             'Update info',
                             style: TextStyle(color: Colors.white),
